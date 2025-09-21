@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulem: Tradisi Undangan Komunal dalam Budaya Indonesia</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <style>
+        :root {
+            --bg-light: hsl(210, 60%, 98%); /* Very light blue, almost white */
+            --text-dark: hsl(210, 40%, 20%);  /* Dark blue-grey */
+            --accent-primary: hsl(170, 70%, 40%); /* Bright teal/mint */
+            --accent-secondary: hsl(25, 80%, 65%); /* Soft orange/peach */
+            --border-light: hsl(210, 20%, 90%); /* Light greyish-blue border */
+            --shadow-light: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: white; /* Slightly brighter header */
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 4px var(--shadow-light);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        article {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--shadow-light);
+            margin-bottom: 30px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: var(--accent-primary);
+            margin-top: 35px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-secondary);
+            padding-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.7em;
+            color: var(--text-dark);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            color: var(--text-dark);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            opacity: 0.85;
+        }
+
+        p {
+            margin-bottom: 1em;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+            font-size: 1.05em;
+        }
+
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        img, svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        .svg-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .svg-container svg {
+            max-width: 250px; /* Smaller for embedded SVGs */
+            height: auto;
+            display: inline-block; /* Center them */
+            vertical-align: middle;
+            margin: 0 10px; /* Space between them if multiple */
+            padding: 15px;
+            background-color: var(--bg-light); /* Light background for the SVG box */
+            border-radius: 8px;
+            box-shadow: 0 1px 3px var(--shadow-light);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--accent-primary);
+            color: white;
+            margin-top: 40px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            box-shadow: 0 -2px 5px var(--shadow-light);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.4em;
+            }
+            h4 {
+                font-size: 1.1em;
+            }
+            article {
+                padding: 20px;
+                margin: 0 15px 30px 15px; /* Add horizontal margin on small screens */
+            }
+            .container {
+                padding: 0; /* Remove horizontal padding, article handles it */
+            }
+            .svg-container svg {
+                max-width: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 30px 15px;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p, li {
+                font-size: 0.95em;
+            }
+            article {
+                padding: 15px;
+            }
+            .svg-container svg {
+                max-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Ulem: Tradisi Undangan Komunal dalam Budaya Indonesia</h1>
+            <p>Menjelajahi makna mendalam, evolusi, dan pentingnya 'Ulem' sebagai perekat sosial dalam masyarakat Indonesia.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <article>
+            <section id="pendahuluan">
+                <h2>Pendahuluan: Memahami Esensi Ulem</h2>
+                <p>'Ulem' adalah sebuah kata dalam bahasa Jawa yang memiliki makna lebih dari sekadar 'undangan'. Ia adalah sebuah konsep yang kaya akan nilai budaya, sosial, dan spiritual yang telah mengakar kuat dalam masyarakat Indonesia, khususnya di Jawa dan daerah-daerah yang terpengaruh budayanya. Ulem bukan hanya selembar kertas atau pesan digital yang memberitahukan tentang suatu acara; ia adalah jembatan yang menghubungkan individu, keluarga, dan komunitas dalam sebuah ikatan kebersamaan, rasa hormat, dan gotong royong.</p>
+
+                <p>Dalam konteks tradisional, ulem merupakan manifestasi dari keinginan untuk berbagi kebahagiaan, memohon restu, atau mempererat silaturahmi. Setiap ulem membawa serta pesan yang tersirat, etika yang harus ditaati, dan harapan akan partisipasi. Ia menjadi penanda dimulainya sebuah hajatan besar, momen penting dalam siklus kehidupan, atau perayaan keagamaan yang melibatkan seluruh elemen masyarakat.</p>
+
+                <p>Artikel ini akan membawa kita menyelami lebih dalam tentang ulem, mulai dari akar katanya, evolusinya dari masa ke masa, berbagai jenis ulem untuk beragam peristiwa, etika yang mengiringinya, hingga bagaimana tradisi ini beradaptasi di era modern. Kita akan melihat bagaimana ulem tidak hanya bertahan sebagai sebuah ritual, tetapi juga terus berkembang, menjaga relevansinya sebagai salah satu pilar penting dalam menjaga keutuhan dan kekayaan budaya komunal Indonesia.</p>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi undangan gulir tradisional dengan segel">
+                        <rect x="10" y="15" width="80" height="70" rx="8" ry="8" fill="#F8F8F8" stroke="#DDDDDD" stroke-width="2"/>
+                        <path d="M10 20 L50 40 L90 20 L90 80 L10 80 Z" fill="white" stroke="#DDDDDD" stroke-width="1"/>
+                        <path d="M15 25 L85 25 L85 75 L15 75 Z" fill="#EBF8FF"/>
+                        <circle cx="50" cy="50" r="15" fill="#FFA07A"/>
+                        <path d="M50 42 L58 50 L50 58 L42 50 Z" fill="white"/>
+                        <text x="50" y="52" font-family="Segoe UI" font-size="10" fill="#20B2AA" text-anchor="middle">Ulem</text>
+                    </svg>
+                </div>
+            </section>
+
+            <section id="akar-kata-dan-makna">
+                <h2>Akar Kata dan Makna Ulem</h2>
+                <p>Secara etimologi, kata 'ulem' berasal dari bahasa Jawa Kuno yang berarti 'mengundang' atau 'memanggil'. Namun, seiring berjalannya waktu dan berkembangnya kebudayaan, makna 'ulem' telah melampaui sekadar arti harfiahnya. Ia merangkum seluruh proses, mulai dari persiapan sebuah acara, penulisan dan pengiriman undangan, hingga interaksi sosial yang terjadi akibat respons terhadap undangan tersebut.</p>
+
+                <p>Dalam filosofi Jawa, ulem seringkali dikaitkan dengan konsep 'guyub rukun', yaitu semangat kebersamaan dan kerukunan. Ketika seseorang menerima ulem, ia tidak hanya diundang sebagai tamu, tetapi juga sebagai bagian dari komunitas yang diharapkan dapat turut serta memberikan dukungan, baik secara fisik, moral, maupun material. Ini mencerminkan pandangan bahwa hajatan pribadi sejatinya adalah hajatan bersama, yang keberhasilannya ditentukan oleh partisipasi seluruh anggota masyarakat.</p>
+
+                <p>Ulem juga mengandung makna penghormatan. Mengundang seseorang secara resmi dengan ulem adalah bentuk pengakuan terhadap status sosial, hubungan kekerabatan, atau kedekatan emosional. Kegagalan untuk mengundang pihak-pihak tertentu dalam suatu acara penting bisa dianggap sebagai ketidakhormatan atau bahkan pemutus tali silaturahmi. Oleh karena itu, daftar undangan, atau 'dhaptar ulem', merupakan elemen krusial yang memerlukan pertimbangan matang dan seringkali melalui musyawarah keluarga.</p>
+
+                <h3>Dimensi Sosial dan Spiritual</h3>
+                <p>Lebih dari sekadar formalitas, ulem menguatkan dimensi sosial. Ia menjadi sarana untuk menjaga jaring-jaring sosial tetap utuh dan berfungsi. Dalam masyarakat agraris tradisional, di mana ikatan kekerabatan dan tetangga sangat erat, ulem berfungsi sebagai pengingat akan kewajiban sosial untuk saling membantu (`sambatan` atau `rewang`) dalam persiapan dan pelaksanaan acara. Respons positif terhadap ulem adalah indikasi dari kekuatan ikatan komunal tersebut.</p>
+
+                <p>Secara spiritual, terutama dalam konteks upacara adat atau keagamaan, ulem seringkali membawa harapan akan doa restu. Ketika seseorang mengundang, ia tidak hanya mengharapkan kehadiran fisik, tetapi juga kehadiran spiritual dalam bentuk doa dan harapan baik dari para tamu. Hal ini terutama terasa dalam ulem untuk acara-acara seperti pernikahan, khitanan, atau peringatan kematian, di mana doa para tamu diyakini membawa keberkahan bagi yang empunya hajat.</p>
+            </section>
+
+            <section id="evolusi-dan-konteks-sejarah">
+                <h2>Evolusi dan Konteks Sejarah Ulem</h2>
+                <p>Sejarah ulem di Indonesia, khususnya di Jawa, memiliki akar yang dalam, berselaras dengan perkembangan peradaban dan masuknya berbagai pengaruh budaya. Sebelum adanya kertas dan teknik cetak modern, ulem kemungkinan disampaikan secara lisan atau melalui utusan khusus. Utusan ini biasanya adalah orang kepercayaan yang menyampaikan pesan secara langsung, seringkali disertai dengan penjelasan detail mengenai acara.</p>
+
+                <h3>Ulem Lisan dan Peran Utusan</h3>
+                <p>Pada masa kerajaan-kerajaan kuno, ulem lisan adalah bentuk yang dominan. Para bangsawan atau raja akan mengirimkan *abdi dalem* atau *caraka* (utusan) untuk menyampaikan undangan kepada kerabat, punggawa, atau tokoh masyarakat lainnya. Utusan ini tidak hanya menyampaikan pesan, tetapi juga berfungsi sebagai representasi dari pemberi ulem, membawa serta kehormatan dan legitimasi dari undangan tersebut. Detail acara, termasuk waktu, tempat, dan tujuan, disampaikan dengan sangat hati-hati dan penuh tata krama.</p>
+
+                <h3>Pengaruh Tulis-Menulis dan Cetak</h3>
+                <p>Dengan masuknya aksara dan kemudian teknologi cetak, ulem mengalami transformasi. Ulem mulai ditulis tangan, seringkali dengan kaligrafi indah di atas kertas berkualitas, bahkan lontar pada masa lampau. Ini menambah nilai estetika dan kesakralan pada undangan. Bahasa yang digunakan pun sangat formal, penuh dengan metafora dan ungkapan-ungkapan Jawa halus (`krama inggil`), mencerminkan tingginya penghargaan terhadap tamu.</p>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi dua orang sedang berjabat tangan menandakan perjanjian atau undangan">
+                        <path d="M20 60 C10 60, 10 70, 20 70 L30 70 C40 70, 40 60, 30 60 Z" fill="#FFA07A"/>
+                        <path d="M70 60 C80 60, 80 70, 70 70 L60 70 C50 70, 50 60, 60 60 Z" fill="#20B2AA"/>
+                        <path d="M30 65 L60 65" stroke="#4B4B4B" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M25 50 C20 40, 30 40, 35 50 Z" fill="#FFA07A"/>
+                        <path d="M75 50 C80 40, 70 40, 65 50 Z" fill="#20B2AA"/>
+                        <path d="M20 60 L20 75 L30 75 L30 60 Z" fill="#FFA07A" opacity="0.8"/>
+                        <path d="M70 60 L70 75 L60 75 L60 60 Z" fill="#20B2AA" opacity="0.8"/>
+                        <text x="50" y="30" font-family="Segoe UI" font-size="12" fill="#4B4B4B" text-anchor="middle">Guyub Rukun</text>
+                    </svg>
+                </div>
+
+                <p>Pada era kolonial, desain ulem mulai mengadopsi elemen-elemen Eropa, meskipun tetap mempertahankan esensi budaya lokal. Penggunaan tinta emas, ukiran rumit, dan motif-motif tertentu menjadi penanda status sosial. Setelah kemerdekaan, dengan semakin mudahnya akses terhadap teknologi cetak, ulem menjadi lebih variatif dalam desain dan jangkauan distribusi, namun tetap memegang teguh nilai-nilai tradisionalnya.</p>
+            </section>
+
+            <section id="jenis-jenis-ulem-dan-konteks-acara">
+                <h2>Jenis-Jenis Ulem dan Konteks Acaranya</h2>
+                <p>Ulem tidak hanya satu jenis; bentuk dan isinya sangat bergantung pada jenis acara yang dihelat. Setiap acara memiliki keunikan dan tingkat formalitas tersendiri, yang tercermin dalam ulem yang disebarkan.</p>
+
+                <h3>1. Ulem Pernikahan (Walimatul Ursy / Panggih)</h3>
+                <p>Ini adalah salah satu jenis ulem yang paling umum dan seringkali paling mewah. Ulem pernikahan tidak hanya mengundang kehadiran, tetapi juga memohon doa restu untuk kedua mempelai. Isinya mencakup nama lengkap mempelai dan orang tua, tanggal, waktu, dan lokasi akad nikah serta resepsi. Seringkali disertakan peta lokasi, petunjuk pakaian, dan kadang-kadang informasi mengenai kotak sumbangan. Desainnya bervariasi dari yang sederhana hingga sangat elegan, seringkali dengan ornamen tradisional seperti batik, ukiran, atau motif bunga. Bahasa yang digunakan sangat sopan dan formal, terkadang mencantumkan kutipan ayat suci atau nasihat pernikahan.</p>
+
+                <h3>2. Ulem Khitanan (Sunatan)</h3>
+                <p>Khitanan, terutama bagi anak laki-laki, adalah momen penting dalam hidup yang sering dirayakan dengan ulem. Ulem ini mengundang kerabat dan tetangga untuk turut merayakan dan mendoakan keselamatan serta kesehatan anak yang dikhitan. Isinya mencantumkan nama anak, tanggal khitan, dan acara syukuran yang biasanya disertai jamuan makan. Desainnya cenderung lebih ceria, meskipun tetap menjaga unsur kesopanan. Kadang ada ilustrasi yang menggambarkan anak atau simbol keislaman.</p>
+
+                <h3>3. Ulem Aqiqah</h3>
+                <p>Aqiqah adalah syukuran atas kelahiran anak. Ulem untuk aqiqah mengundang untuk hadir dalam acara pemotongan hewan kurban (domba/kambing) dan jamuan makan. Tujuannya adalah memohon doa agar anak tumbuh sehat, saleh/salehah, dan berbakti. Nama anak dan orang tua, tanggal lahir, dan tanggal acara aqiqah disertakan. Desainnya biasanya lembut dengan warna-warna pastel, seringkali dengan ilustrasi bayi atau simbol agama.</p>
+
+                <h3>4. Ulem Peringatan Kematian (Tahlilan / Kenduri)</h3>
+                <p>Ulem ini memiliki nuansa yang berbeda, lebih khidmat dan penuh duka. Tujuannya adalah mengundang untuk hadir dalam doa bersama (tahlilan) atau kenduri pada hari ke-3, ke-7, ke-40, ke-100, atau ke-1000 setelah kematian seseorang. Ulem ini berisi nama almarhum/almarhumah, tanggal wafat, dan tanggal serta lokasi acara. Desainnya sederhana, seringkali tanpa ornamen berlebihan, dengan warna-warna netral atau gelap, dan bahasa yang sangat sopan dan penuh belasungkawa.</p>
+
+                <h3>5. Ulem Syukuran Rumah Baru (Boyongan / Tingkeban)</h3>
+                <p>Ketika seseorang pindah ke rumah baru atau mengadakan syukuran kehamilan (tingkeban), ulem disebarkan untuk mengundang kerabat dan tetangga. Tujuannya adalah memohon doa keselamatan dan keberkahan. Untuk syukuran rumah baru, ulem berisi alamat baru dan tanggal syukuran. Untuk tingkeban, ulem mengundang untuk acara mitoni atau selamatan 7 bulanan kehamilan. Desainnya bervariasi, dari yang sederhana hingga cukup meriah, tergantung selera pemilik hajat.</p>
+
+                <h3>6. Ulem Pertemuan Keluarga / Arisan</h3>
+                <p>Ulem jenis ini biasanya lebih informal dan seringkali disampaikan secara lisan atau melalui pesan singkat di era modern. Namun, untuk pertemuan keluarga besar yang lebih resmi atau arisan yang terstruktur, ulem tertulis bisa digunakan. Isinya simpel: waktu, tempat, dan agenda pertemuan. Tujuannya adalah menjaga silaturahmi dan koordinasi kegiatan keluarga.</p>
+
+                <h3>7. Ulem Acara Komunitas / Desa (Bersih Desa, Sedekah Bumi)</h3>
+                <p>Dalam skala komunitas atau desa, ulem sering digunakan untuk mengundang partisipasi dalam acara-acara kolektif seperti bersih desa, sedekah bumi, peringatan hari besar nasional, atau acara keagamaan desa. Ulem ini seringkali disampaikan melalui pengumuman di masjid, balai desa, atau selebaran yang ditempel. Tujuannya adalah menggalang partisipasi aktif dari seluruh warga untuk kesuksesan acara komunal.</p>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi rumah tradisional Jawa dengan gerbang dan pepohonan, melambangkan lokasi acara">
+                        <rect x="10" y="40" width="80" height="40" rx="5" ry="5" fill="#F0F8FF" stroke="#ADD8E6" stroke-width="2"/>
+                        <path d="M20 40 L50 15 L80 40 Z" fill="#D3D3D3" stroke="#A9A9A9" stroke-width="2"/>
+                        <rect x="40" y="55" width="20" height="25" fill="#FFE4B5" stroke="#D2B48C" stroke-width="1.5"/>
+                        <circle cx="50" cy="65" r="3" fill="#8B4513"/>
+                        <path d="M50 80 L50 90" stroke="#8B4513" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="25" cy="35" r="5" fill="#90EE90"/>
+                        <circle cx="75" cy="35" r="5" fill="#90EE90"/>
+                        <text x="50" y="70" font-family="Segoe UI" font-size="10" fill="#4B4B4B" text-anchor="middle">Hajatan</text>
+                    </svg>
+                </div>
+            </section>
+
+            <section id="komponen-ulem-tradisional">
+                <h2>Komponen Ulem Tradisional</h2>
+                <p>Ulem tradisional, terutama yang tertulis, memiliki beberapa komponen penting yang menjadikannya sebuah karya seni sekaligus media komunikasi yang efektif.</p>
+
+                <h3>1. Bahasa dan Kaligrafi</h3>
+                <p>Ulem tradisional seringkali ditulis dalam bahasa Jawa halus (`krama inggil`) atau bahasa Indonesia yang sangat sopan. Penggunaan aksara Jawa kuno atau kaligrafi indah adalah hal yang lazim, terutama untuk ulem pernikahan atau acara sakral. Pemilihan kata sangat hati-hati, mencerminkan rasa hormat dan keseriusan pihak yang mengundang.</p>
+
+                <h3>2. Desain dan Material</h3>
+                <p>Kertas yang digunakan bukan sembarang kertas. Seringkali dipilih kertas berkualitas tinggi, tebal, atau dengan tekstur khusus. Ornamen dan motif tradisional seperti batik, ukiran kayu, atau motif bunga sering menghiasi pinggirannya. Pewarnaan juga penting, dengan kombinasi warna yang melambangkan kemewahan, kesakralan, atau kebahagiaan.</p>
+
+                <h3>3. Informasi Penting</h3>
+                <ul>
+                    <li>**Pihak Pengundang:** Nama lengkap keluarga atau individu yang mengadakan hajat.</li>
+                    <li>**Pihak yang Diundang:** Nama lengkap tamu. Ini seringkali ditulis tangan untuk menunjukkan perhatian personal.</li>
+                    <li>**Jenis Acara:** Dengan jelas disebutkan apakah itu pernikahan, khitanan, tahlilan, dll.</li>
+                    <li>**Waktu dan Tanggal:** Detail hari, tanggal, dan jam acara utama.</li>
+                    <li>**Lokasi:** Alamat lengkap tempat acara dilaksanakan, seringkali disertai peta atau petunjuk arah sederhana.</li>
+                    <li>**Permohonan/Harapan:** Kalimat permohonan doa restu, kehadiran, atau partisipasi.</li>
+                    <li>**RSVP/Konfirmasi Kehadiran:** Petunjuk untuk konfirmasi kehadiran (terutama untuk acara besar).</li>
+                </ul>
+
+                <h3>4. Simbolisme</h3>
+                <p>Setiap detail dalam ulem bisa mengandung simbolisme. Misalnya, motif burung merak bisa melambangkan keindahan dan kemewahan, sedangkan motif bunga melati melambangkan kesucian. Penggunaan warna tertentu juga bisa memiliki makna filosofis tersendiri.</p>
+            </section>
+
+            <section id="etika-dan-tata-krama-menerima-ulem">
+                <h2>Etika dan Tata Krama Menerima dan Merespons Ulem</h2>
+                <p>Menerima ulem bukan sekadar menerima informasi, melainkan menerima sebuah kehormatan dan amanah sosial. Ada etika dan tata krama yang harus diperhatikan oleh penerima ulem.</p>
+
+                <h3>1. Konfirmasi Kehadiran (RSVP)</h3>
+                <p>Untuk acara-acara besar seperti pernikahan, sangat penting untuk mengonfirmasi kehadiran jika diminta. Ini membantu pihak pengundang dalam perencanaan logistik (jumlah makanan, tempat duduk, dll.). Ketidakpastian bisa merepotkan tuan rumah.</p>
+
+                <h3>2. Menghadiri Acara Tepat Waktu</h3>
+                <p>Berusaha untuk hadir tepat waktu, atau sedikit lebih awal dari waktu yang tertera. Datang terlalu terlambat bisa dianggap kurang menghargai, terutama untuk acara-acara yang memiliki runtutan prosesi sakral.</p>
+
+                <h3>3. Pakaian yang Sesuai</h3>
+                <p>Perhatikan petunjuk pakaian (dress code) jika ada. Jika tidak ada, pilihlah pakaian yang sopan dan sesuai dengan jenis acara. Untuk acara formal, pakaian batik atau busana nasional seringkali menjadi pilihan yang tepat. Untuk acara duka, hindari warna-warna cerah.</p>
+
+                <h3>4. Membawa Sumbangan (Parijan / Amplop)</h3>
+                <p>Membawa sumbangan, baik dalam bentuk uang (amplop) atau barang, adalah tradisi yang sangat lazim. Ini adalah bentuk `rewang` atau partisipasi material yang diharapkan dapat meringankan beban tuan rumah. Besarannya disesuaikan dengan kemampuan dan kedekatan hubungan. Sumbangan biasanya diserahkan di area registrasi yang sudah disediakan.</p>
+
+                <h3>5. Memberikan Doa Restu dan Ucapan Selamat/Belasungkawa</h3>
+                <p>Jangan lupa untuk menyalami tuan rumah dan memberikan ucapan selamat (untuk acara suka cita) atau belasungkawa (untuk acara duka cita). Doa restu dari para tamu sangat dihargai oleh pihak yang mengundang.</p>
+
+                <h3>6. Menjaga Sopan Santun</h3>
+                <p>Selama acara, penting untuk menjaga sopan santun, tidak membuat keributan, dan menghargai jalannya acara. Terlibat dalam obrolan yang tidak pantas atau berperilaku tidak semestinya dapat mencoreng suasana.</p>
+
+                <h3>7. Tidak Datang Jika Tidak Diundang?</h3>
+                <p>Secara umum, etika melarang seseorang datang ke acara jika tidak secara langsung menerima ulem. Namun, dalam konteks masyarakat komunal yang sangat erat, terkadang ada fleksibilitas, terutama jika orang tersebut adalah tetangga dekat yang secara de facto sering terlibat dalam kegiatan bersama, meskipun ulem resminya tidak sampai kepadanya. Tetapi, tetap lebih baik jika menunggu undangan.</p>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi sepasang tangan memberikan amplop kepada tangan lain, melambangkan sumbangan atau hadiah">
+                        <path d="M25 60 C15 60, 15 70, 25 70 L35 70 C45 70, 45 60, 35 60 Z" fill="#20B2AA"/>
+                        <path d="M75 60 C85 60, 85 70, 75 70 L65 70 C55 70, 55 60, 65 60 Z" fill="#FFA07A"/>
+                        <rect x="35" y="45" width="30" height="20" rx="3" ry="3" fill="#FFFACD" stroke="#DAA520" stroke-width="1.5"/>
+                        <path d="M35 48 L65 48" stroke="#DAA520" stroke-width="1"/>
+                        <text x="50" y="58" font-family="Segoe UI" font-size="10" fill="#DAA520" text-anchor="middle">Sumbangan</text>
+                        <path d="M30 65 L40 65 C45 65, 45 60, 40 60 L30 60 Z" fill="#20B2AA"/>
+                        <path d="M70 65 L60 65 C55 65, 55 60, 60 60 L70 60 Z" fill="#FFA07A"/>
+                    </svg>
+                </div>
+            </section>
+
+            <section id="ulem-di-era-modern">
+                <h2>Ulem di Era Modern: Digitalisasi dan Adaptasi</h2>
+                <p>Perkembangan teknologi telah membawa perubahan signifikan dalam cara ulem disampaikan. Era digital menghadirkan opsi-opsi baru yang lebih cepat, efisien, dan terkadang lebih kreatif.</p>
+
+                <h3>1. Undangan Digital (E-Ulem)</h3>
+                <p>Kini, e-ulem atau undangan digital menjadi sangat populer. Ini bisa berupa:
+                    <ul>
+                        <li>**Undangan Website/Blog:** Sebuah situs web mini yang berisi semua informasi acara, galeri foto, peta interaktif, formulir RSVP, hingga daftar hadiah.</li>
+                        <li>**Undangan Video:** Klip video pendek yang artistik untuk mengundang tamu, sering dibagikan melalui media sosial atau aplikasi pesan.</li>
+                        <li>**Kartu Digital (E-Card):** Gambar atau desain grafis statis yang dikirimkan melalui WhatsApp, email, atau platform pesan lainnya.</li>
+                        <li>**Google Forms/Aplikasi Khusus:** Untuk RSVP dan pengumpulan data tamu.</li>
+                    </ul>
+                </p>
+                <p>Keuntungan utama dari e-ulem adalah efisiensi biaya (tidak perlu cetak), kecepatan distribusi, dan kemudahan bagi tamu untuk mengakses informasi tambahan. Namun, kekurangannya adalah terkadang kurang terasa sentuhan personalnya, dan ada kekhawatiran bagi tamu yang kurang akrab dengan teknologi.</p>
+
+                <h3>2. Tantangan dan Peluang</h3>
+                <p>Digitalisasi ulem menghadirkan tantangan dalam menjaga nilai-nilai tradisional. Apakah e-ulem memiliki bobot penghormatan yang sama dengan ulem cetak yang disampaikan secara personal? Bagi sebagian masyarakat, terutama yang lebih tua atau yang masih sangat menjunjung adat, ulem cetak tetap tak tergantikan.</p>
+                <p>Namun, digitalisasi juga membuka peluang. Desain e-ulem bisa sangat kreatif dan interaktif. Jangkauan distribusinya jauh lebih luas, memungkinkan undangan kepada kerabat atau teman yang berada di luar kota atau bahkan luar negeri dengan mudah. Ini juga lebih ramah lingkungan karena mengurangi penggunaan kertas.</p>
+
+                <h3>3. Kombinasi Tradisional dan Modern</h3>
+                <p>Banyak pihak pengundang memilih untuk mengombinasikan keduanya: ulem cetak untuk keluarga inti, tokoh masyarakat, dan kerabat dekat yang dihormati, serta e-ulem untuk teman-teman dan kenalan yang lebih muda atau yang tinggal jauh. Pendekatan hibrida ini mencoba untuk mengambil yang terbaik dari kedua dunia, menjaga tradisi sambil merangkul inovasi.</p>
+            </section>
+
+            <section id="filosofi-di-balik-ulem">
+                <h2>Filosofi di Balik Ulem: Perekat Sosial yang Abadi</h2>
+                <p>Lebih dari sekadar sebuah formalitas, ulem adalah perwujudan dari filosofi hidup masyarakat Indonesia yang kaya. Ada beberapa pilar filosofis yang diwakili oleh tradisi ulem:</p>
+
+                <h3>1. Gotong Royong dan Kebersamaan</h3>
+                <p>Inti dari ulem adalah semangat gotong royong. Mengundang berarti melibatkan. Tamu yang diundang diharapkan tidak hanya datang menikmati, tetapi juga turut serta dalam sukacita maupun duka. Ini terlihat jelas dalam tradisi `rewang` (membantu persiapan) yang sering terjadi di pedesaan, di mana tetangga dan kerabat bahu-membahu menyiapkan hidangan, mendekorasi, atau menata tempat acara. Ulem menjadi katalisator bagi semangat komunal ini.</p>
+
+                <h3>2. Penghormatan dan Pengakuan Sosial</h3>
+                <p>Ulem adalah bentuk penghormatan. Memberikan ulem kepada seseorang berarti mengakui posisinya dalam lingkaran sosial, kekerabatan, atau komunitas. Sebaliknya, menerima ulem adalah bentuk pengakuan bahwa seseorang dipercaya dan dihargai oleh pihak pengundang. Hal ini sangat penting dalam menjaga harmoni sosial dan hierarki adat.</p>
+
+                <h3>3. Berbagi Kebahagiaan dan Meringankan Beban</h3>
+                <p>Dalam filosofi Jawa, ada keyakinan bahwa kebahagiaan yang dibagi akan berlipat ganda, dan kesedihan yang dibagi akan berkurang. Ulem menjadi sarana untuk berbagi kebahagiaan (dalam pernikahan, kelahiran) atau berbagi beban kesedihan (dalam peringatan kematian). Sumbangan yang diberikan tamu adalah wujud nyata dari keinginan untuk meringankan beban finansial atau tenaga yang dipikul oleh tuan rumah.</p>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi beberapa orang duduk melingkar dalam musyawarah atau pertemuan keluarga">
+                        <circle cx="50" cy="50" r="40" fill="#E0FFFF" stroke="#B2EBF2" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="25" fill="#FFE0B2"/>
+                        <path d="M50 25 C45 20, 55 20, 50 25 Z" fill="#90EE90"/>
+                        <path d="M75 50 C80 45, 80 55, 75 50 Z" fill="#90EE90"/>
+                        <path d="M50 75 C45 80, 55 80, 50 75 Z" fill="#90EE90"/>
+                        <path d="M25 50 C20 45, 20 55, 25 50 Z" fill="#90EE90"/>
+                        <text x="50" y="52" font-family="Segoe UI" font-size="10" fill="#4B4B4B" text-anchor="middle">Komunitas</text>
+                    </svg>
+                </div>
+
+                <h3>4. Penguatan Silaturahmi</h3>
+                <p>Setiap ulem adalah kesempatan untuk mempererat tali silaturahmi. Baik yang mengundang maupun yang diundang, keduanya memiliki peran dalam menjaga hubungan. Kehadiran tamu dalam sebuah acara adalah investasi sosial yang penting, yang suatu saat mungkin akan dibalas ketika ia juga mengadakan hajat.</p>
+
+                <h3>5. Transmisi Nilai Budaya</h3>
+                <p>Ulem, dengan segala ritual dan etiketnya, berperan sebagai media transmisi nilai-nilai budaya dari satu generasi ke generasi berikutnya. Anak-anak yang melihat orang tua mereka menyiapkan ulem, mengantarkannya, atau menghadiri acara, secara tidak langsung belajar tentang pentingnya kebersamaan, rasa hormat, dan gotong royong.</p>
+            </section>
+
+            <section id="ulem-dan-kuliner-tradisional">
+                <h2>Ulem dan Kuliner Tradisional: Simfoni Rasa dan Kebersamaan</h2>
+                <p>Tidak lengkap rasanya berbicara tentang ulem tanpa menyebutkan peran penting kuliner tradisional yang selalu menyertainya. Dalam setiap hajatan yang diumumkan melalui ulem, hidangan makanan menempati posisi sentral, bukan hanya sebagai jamuan, tetapi juga sebagai simbol kemakmuran, rasa syukur, dan kebersamaan.</p>
+
+                <h3>1. Simbol Kemakmuran dan Rasa Syukur</h3>
+                <p>Penyajian makanan yang melimpah dan beragam dalam sebuah hajatan adalah manifestasi dari rasa syukur tuan rumah atas berkah yang diterima, sekaligus harapan akan kemakmuran di masa depan. Semakin banyak dan lezat hidangan yang disajikan, seringkali dianggap sebagai cerminan kemampuan dan keikhlasan tuan rumah dalam berbagi kebahagiaan.</p>
+
+                <h3>2. Ragam Hidangan Khas</h3>
+                <p>Setiap daerah, bahkan setiap jenis ulem, seringkali memiliki hidangan khasnya sendiri.
+                    <ul>
+                        <li>**Nasi Tumpeng:** Khususnya di Jawa, nasi tumpeng adalah hidangan wajib dalam banyak hajatan. Nasi kuning atau nasi putih yang dibentuk kerucut ini melambangkan gunung, dikelilingi oleh aneka lauk pauk (`sego golong`, `ingkung ayam`, `sayur urap`, telur dadar, perkedel) yang masing-masing memiliki makna filosofis tersendiri. Tumpeng seringkali menjadi pusat dari ritual pemotongan atau `kenduri` yang menandai puncak acara.</li>
+                        <li>**Gudangan/Urap:** Campuran sayuran rebus dengan bumbu kelapa parut, melambangkan kesuburan dan kemakmuran.</li>
+                        <li>**Ingkung Ayam:** Ayam utuh yang dimasak bumbu kuning atau santan, melambangkan ketulusan dan pengabdian.</li>
+                        <li>**Jajan Pasar:** Berbagai macam kue tradisional (lemper, getuk, apem, klepon, cenil) yang disajikan sebagai camilan, melambangkan keberagaman dan manisnya kehidupan.</li>
+                        <li>**Jenang/Bubur:** Sering disajikan dalam acara tertentu, seperti `jenang sengkolo` untuk menolak bala atau `jenang procot` untuk syukuran kehamilan.</li>
+                        <li>**Nasi Berkat/Bokoran:** Makanan yang dibagikan kepada para tamu yang hadir sebagai tanda terima kasih dan berkat dari tuan rumah. Biasanya dikemas dalam kotak atau besek (anyaman bambu).</li>
+                    </ul>
+                </p>
+
+                <h3>3. Momen Kebersamaan di Meja Makan</h3>
+                <p>Jamuan makan adalah inti dari interaksi sosial dalam sebuah acara ulem. Di sinilah terjadi percakapan, tawa, dan pertukaran cerita. Duduk bersama, berbagi hidangan, adalah cara kuno untuk mempererat tali persaudaraan dan menciptakan kenangan kolektif. Konsep `lesehan` (duduk di lantai) dalam beberapa acara juga menambah keakraban dan kesetaraan di antara para tamu.</p>
+
+                <h3>4. Tradisi "Membungkus Pulang"</h3>
+                <p>Di banyak daerah, ada tradisi di mana tamu diperbolehkan atau bahkan didorong untuk membungkus sisa makanan untuk dibawa pulang. Ini bukan hanya tentang hemat, tetapi juga sebagai simbol `berkat` atau rezeki yang dibagi dari tuan rumah kepada para tamunya. Makanan yang dibawa pulang ini seringkali dibagikan lagi kepada anggota keluarga di rumah yang tidak dapat hadir, memperluas lingkaran keberkahan.</p>
+
+                <h3>5. Persiapan Kuliner sebagai Gotong Royong</h3>
+                <p>Proses persiapan kuliner untuk hajatan besar adalah contoh nyata dari semangat gotong royong. Tetangga dan kerabat perempuan seringkali datang jauh-jauh hari sebelum acara untuk membantu memasak, mengupas bahan, atau menyiapkan bumbu. Ini adalah bentuk `rewang` yang sangat dihargai dan menjadi bagian tak terpisahkan dari tradisi ulem. Aroma masakan yang menyebar dari rumah yang berhajat menjadi penanda bahwa sebuah peristiwa penting akan segera tiba, menarik perhatian dan keikutsertaan komunitas.</p>
+
+                <p>Dengan demikian, kuliner dalam tradisi ulem bukan sekadar mengisi perut, melainkan elemen vital yang memperkaya pengalaman, mengikat hubungan, dan menancapkan makna filosofis dalam setiap perayaan.</p>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi hidangan nasi tumpeng dengan lauk pauk di sekelilingnya, melambangkan jamuan">
+                        <circle cx="50" cy="50" r="40" fill="#FFF8DC" stroke="#DAA520" stroke-width="2"/>
+                        <path d="M50 20 L30 55 L70 55 Z" fill="#FFD700"/>
+                        <circle cx="50" cy="55" r="5" fill="#8B4513"/>
+                        <rect x="25" y="60" width="10" height="5" fill="#A0522D"/>
+                        <rect x="65" y="60" width="10" height="5" fill="#A0522D"/>
+                        <circle cx="35" cy="70" r="3" fill="#FF6347"/>
+                        <circle cx="65" cy="70" r="3" fill="#98FB98"/>
+                        <text x="50" y="85" font-family="Segoe UI" font-size="10" fill="#4B4B4B" text-anchor="middle">Tumpeng</text>
+                    </svg>
+                </div>
+            </section>
+
+            <section id="variasi-regional-dan-konteks-lain">
+                <h2>Variasi Regional dan Konteks Ulem di Luar Jawa</h2>
+                <p>Meskipun istilah "ulem" sangat identik dengan budaya Jawa, konsep undangan komunal dengan nilai-nilai serupa juga ditemukan di berbagai daerah lain di Indonesia, meskipun dengan nama dan bentuk yang berbeda.</p>
+
+                <h3>1. Ulem di Sumatera (Kenduri, Baralek, Horja)</h3>
+                <ul>
+                    <li>**Kenduri:** Mirip dengan di Jawa, kenduri (atau `khanduri` di Aceh, `gondang` di Batak Toba) adalah acara syukuran atau doa bersama yang melibatkan jamuan makan. Ulem bisa disampaikan lisan atau tertulis, menekankan partisipasi komunitas dan doa restu.</li>
+                    <li>**Baralek (Minangkabau):** Pesta pernikahan besar di Minangkabau yang melibatkan seluruh kaum kerabat dan warga nagari. Undangan disampaikan secara personal oleh perwakilan keluarga kepada setiap rumah, seringkali dengan tata cara adat yang ketat.</li>
+                    <li>**Horja (Batak):** Sebuah pesta adat besar yang memerlukan persiapan panjang dan melibatkan seluruh marga. Undangan disampaikan melalui `tonggo-tonggo` atau kunjungan langsung dengan membawa sirih sebagai simbol penghormatan.</li>
+                </ul>
+
+                <h3>2. Ulem di Kalimantan, Sulawesi, dan Timur Indonesia</h3>
+                <p>Di Kalimantan, Sulawesi, dan wilayah timur Indonesia, konsep undangan juga sangat kuat dalam mempererat tali persaudaraan. Undangan untuk `Gawai Adat` di Dayak, `Mappacci` di Bugis-Makassar, atau `Upacara Kematian` di Toraja selalu melibatkan seluruh sanak saudara dan warga desa. Bentuk undangannya bisa bervariasi dari lisan yang dibawa oleh perwakilan, hingga surat tertulis yang formal, atau bahkan `patur-patur` (pengumuman) yang dibacakan di pusat desa.</p>
+
+                <h3>3. Peran Lembaga Adat dan Tokoh Masyarakat</h3>
+                <p>Di banyak daerah, ulem tidak hanya dari individu ke individu, tetapi juga dari lembaga adat atau tokoh masyarakat kepada warga. Ini menegaskan bahwa hajatan bukan hanya urusan pribadi, melainkan urusan bersama yang memerlukan dukungan kolektif. Ulem dari kepala adat atau pemimpin komunitas seringkali memiliki kekuatan persuasif yang lebih besar.</p>
+
+                <h3>4. Ulem dalam Konteks Keagamaan</h3>
+                <p>Selain acara adat, ulem juga sangat relevan dalam konteks keagamaan. Undangan untuk pengajian akbar, Isra Mi'raj, Maulid Nabi, atau perayaan Idul Fitri/Adha, meskipun seringkali lebih massal dan terbuka, tetap memiliki semangat ulem: mengumpulkan jemaah dalam kebersamaan spiritual dan berbagi kebaikan.</p>
+                <p>Variasi regional ini menunjukkan betapa universalnya kebutuhan manusia akan koneksi sosial dan perayaan dalam kebersamaan, yang diwujudkan melalui bentuk undangan yang disesuaikan dengan kearifan lokal masing-masing.</p>
+            </section>
+
+            <section id="masa-depan-ulem">
+                <h2>Masa Depan Ulem: Menjaga Tradisi dalam Dinamika Perubahan</h2>
+                <p>Di tengah arus globalisasi dan modernisasi yang kian deras, tradisi ulem menghadapi tantangan sekaligus peluang untuk beradaptasi dan terus relevan. Bagaimana ulem akan berkembang di masa depan?</p>
+
+                <h3>1. Harmonisasi Tradisi dan Inovasi</h3>
+                <p>Masa depan ulem kemungkinan besar akan berada pada titik harmonisasi antara tradisi dan inovasi. Ulem cetak dengan sentuhan personal mungkin akan tetap dipertahankan untuk acara-acara yang sangat sakral atau untuk mengundang tokoh-tokoh yang dihormati. Sementara itu, e-ulem akan terus berkembang dengan fitur-fitur yang lebih interaktif, personalisasi yang lebih mendalam, dan integrasi dengan platform media sosial yang lebih canggih.</p>
+
+                <h3>2. Edukasi dan Pelestarian</h3>
+                <p>Pentingnya edukasi tentang makna dan etika di balik ulem akan menjadi kunci pelestarian. Generasi muda perlu memahami bahwa ulem bukan sekadar formalitas, tetapi sebuah jembatan budaya yang kaya nilai. Lokakarya, pameran, atau konten digital yang mendidik tentang ulem bisa menjadi sarana untuk menjaga tradisi ini tetap hidup dan relevan.</p>
+
+                <h3>3. Personalisasi dan Keberlanjutan</h3>
+                <p>Meskipun digital, ulem di masa depan akan semakin personal. Teknologi memungkinkan undangan disesuaikan dengan preferensi atau hubungan personal dengan tamu. Selain itu, aspek keberlanjutan (sustainability) akan menjadi pertimbangan penting. Ulem digital yang ramah lingkungan akan semakin diminati, atau ulem cetak yang menggunakan bahan daur ulang.</p>
+
+                <h3>4. Ulem sebagai Bagian dari Ekosistem Event</h3>
+                <p>Ulem akan semakin terintegrasi dengan ekosistem penyelenggaraan acara secara keseluruhan, mulai dari perencanaan, manajemen tamu, hingga dokumentasi. Aplikasi event management akan memudahkan proses pengiriman ulem, pengelolaan RSVP, hingga penyampaian ucapan terima kasih pasca-acara.</p>
+                <p>Pada akhirnya, esensi ulem – yaitu semangat kebersamaan, penghormatan, gotong royong, dan silaturahmi – akan tetap menjadi intinya, terlepas dari bentuk medium penyampaiannya. Ulem adalah bukti bahwa dalam setiap perayaan kehidupan, manusia selalu membutuhkan kehadiran dan dukungan dari sesamanya.</p>
+            </section>
+
+            <section id="penutup">
+                <h2>Penutup: Ulem, Jantung Kebersamaan Indonesia</h2>
+                <p>Dari lembar kertas yang dihias indah hingga pesan digital yang melesat cepat, 'Ulem' telah melintasi zaman, beradaptasi dengan perubahan, namun tak pernah kehilangan jiwanya. Ia adalah manifestasi nyata dari kekayaan budaya Indonesia yang sangat menghargai kebersamaan, gotong royong, dan silaturahmi. Ulem bukan hanya sekadar ajakan untuk hadir, melainkan panggilan untuk menjadi bagian dari sebuah peristiwa, saksi dari momen-momen penting kehidupan, dan pilar penopang ikatan sosial yang tak lekang oleh waktu.</p>
+
+                <p>Setiap ulem membawa cerita, harapan, dan doa. Ia adalah pengingat bahwa dalam setiap suka maupun duka, kita tidak pernah sendiri. Ada keluarga, sahabat, tetangga, dan komunitas yang siap berbagi, mendukung, dan merayakan. Dalam masyarakat yang kian individualistik, peran ulem sebagai perekat sosial menjadi semakin krusial, menjaga agar nilai-nilai luhur kebersamaan tetap lestari di tengah dinamika modernitas.</p>
+
+                <p>Mari kita terus menghargai tradisi ulem, dalam bentuk apa pun ia hadir. Karena di balik setiap undangan, tersemat hati yang ingin berbagi, tangan yang ingin merangkul, dan semangat kebersamaan yang menjadi jantung dari identitas bangsa Indonesia.</p>
+
+                <div class="svg-container">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi dua tangan memegang undangan, melambangkan ajakan dan penerimaan.">
+                        <path d="M20 70 C10 70, 10 80, 20 80 L30 80 C40 80, 40 70, 30 70 Z" fill="#FFA07A"/>
+                        <path d="M70 70 C80 70, 80 80, 70 80 L60 80 C50 80, 50 70, 60 70 Z" fill="#20B2AA"/>
+                        <rect x="30" y="30" width="40" height="35" rx="5" ry="5" fill="#EBF8FF" stroke="#ADD8E6" stroke-width="2"/>
+                        <path d="M35 35 L65 35 L65 60 L35 60 Z" fill="white"/>
+                        <text x="50" y="48" font-family="Segoe UI" font-size="12" fill="#4B4B4B" text-anchor="middle">Ulem</text>
+                        <path d="M50 30 L60 30 C65 30, 65 35, 60 35 L50 35 Z" fill="#ADD8E6"/>
+                        <path d="M50 30 L40 30 C35 30, 35 35, 40 35 L50 35 Z" fill="#ADD8E6"/>
+                    </svg>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Terima kasih telah menjelajahi makna Ulem.</p>
+        </div>
+    </footer>
+<div class='related-posts'><h3>Related Posts</h3><ul><li><a href="/walang">Walang</a></li>
+<li><a href="/walik">Walik</a></li>
+<li><a href="/yakisoba">Yakisoba</a></li>
+<li><a href="/walas">Walas</a></li>
+<li><a href="/sejarah-singkat-candi-borobudur-brainly">Sejarah Singkat Candi Borobudur Brainly</a></li>
+<li><a href="/wangsalan">Wangsalan</a></li>
+<li><a href="/verniks">Verniks</a></li>
+<li><a href="/verdigris">Verdigris</a></li>
+<li><a href="/yesus">Yesus</a></li>
+<li><a href="/usuludin">Usuludin</a></li></ul></div>
+<script src="/ik.js"></script>
+</body>
+</html>

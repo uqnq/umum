@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNAM: Jantung Intelektual Meksiko & Pusat Pengetahuan Dunia</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <style>
+        /* Variabel Warna Sejuk Cerah */
+        :root {
+            --primary-blue: #007bff; /* Biru cerah utama */
+            --light-blue: #e0f2f7; /* Biru sangat muda, latar belakang */
+            --soft-green: #28a745; /* Hijau lembut, untuk aksen */
+            --text-dark: #343a40; /* Teks gelap untuk keterbacaan */
+            --text-light: #6c757d; /* Teks abu-abu muda */
+            --background-white: #f8f9fa; /* Latar belakang putih bersih */
+            --border-light: #dee2e6; /* Garis tepi terang */
+            --accent-yellow: #ffc107; /* Kuning cerah untuk highlight */
+        }
+
+        /* Favicon SVG */
+        /* Sebuah SVG sederhana yang mewakili huruf 'U' atau sebuah buku */
+        /* Untuk tujuan contoh, SVG ini akan ditaruh langsung di href,
+           namun dalam implementasi nyata, file SVG terpisah adalah praktik terbaik.
+           Karena ini adalah 'inline' untuk contoh, saya akan membuatnya minimal. */
+        @supports (background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E")) {
+            link[rel="icon"][href="/favicon.svg"] {
+                mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="transparent"/><path d="M45 20 L55 20 L55 80 L45 80 Z M30 70 Q30 90 50 90 Q70 90 70 70 L60 70 Q60 80 50 80 Q40 80 40 70 Z" fill="%23007bff"/></svg>');
+                -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="transparent"/><path d="M45 20 L55 20 L55 80 L45 80 Z M30 70 Q30 90 50 90 Q70 90 70 70 L60 70 Q60 80 50 80 Q40 80 40 70 Z" fill="%23007bff"/></svg>');
+                background-color: var(--primary-blue);
+            }
+        }
+
+
+        /* Reset dan Gaya Dasar */
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-white);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Konten Utama */
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: var(--text-dark);
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 1em;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Gambar SVG */
+        .article-image {
+            display: block;
+            margin: 30px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-blue); /* Latar belakang untuk gambar SVG */
+            padding: 15px;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: -15px;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            background-color: var(--light-blue);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Responsif untuk Mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            header {
+                padding: 30px 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>UNAM: Jantung Intelektual Meksiko dan Pusat Pengetahuan Dunia</h1>
+        </header>
+
+        <main>
+            <section>
+                <h2>Pendahuluan: Sebuah Pilar Pengetahuan dan Budaya</h2>
+                <p>Universidad Nacional Autónoma de México (UNAM) bukan sekadar institusi pendidikan tinggi; ia adalah sebuah mercusuar pengetahuan, budaya, dan inovasi yang telah berdiri teguh sebagai salah satu pilar utama pembangunan Meksiko selama berabad-abad. Didirikan pada tanggal 21 September 1551 dengan nama Royal and Pontifical University of Mexico, jauh sebelum kemerdekaan Meksiko, UNAM mewarisi sejarah yang kaya dan mendalam, menjadikannya salah satu universitas tertua di benua Amerika. Perjalanan panjangnya telah membentuknya menjadi sebuah entitas yang dinamis, adaptif, dan selalu relevan, menghadapi tantangan zaman dengan semangat keunggulan akademik dan komitmen sosial yang tak tergoyahkan.</p>
+
+                <p>Sebagai universitas otonom, UNAM menikmati kebebasan intelektual yang memungkinkannya untuk berfungsi sebagai forum terbuka bagi ide-ide, debat, dan penemuan. Otonomi ini, yang diperoleh secara bertahap dan diabadikan dalam konstitusinya, adalah landasan bagi kemampuannya untuk mendidik generasi pemimpin, ilmuwan, seniman, dan pemikir yang telah memberikan kontribusi tak ternilai bagi Meksiko dan dunia. UNAM tidak hanya berfokus pada transmisi pengetahuan, tetapi juga pada penciptaan pengetahuan baru melalui penelitian yang intensif, serta pada penyebaran budaya dan seni kepada masyarakat luas. Inilah yang membuatnya menjadi lebih dari sekadar lembaga pendidikan; ia adalah sebuah ekosistem intelektual yang hidup dan bernapas.</p>
+
+                <p>Ciri khas UNAM adalah perpaduan unik antara tradisi dan modernitas. Arsitektur kampusnya, khususnya Ciudad Universitaria (CU) yang diakui sebagai Situs Warisan Dunia UNESCO, mencerminkan perpaduan estetika pra-Hispanik, kolonial, dan modern, dengan mural-mural megah yang menceritakan sejarah dan aspirasi bangsa Meksiko. Di balik fasad-fasad bersejarah dan modern ini, UNAM terus berinovasi dalam metodologi pengajaran, memperluas jangkauan program akademiknya, dan memanfaatkan teknologi terkini untuk memastikan bahwa lulusannya siap menghadapi kompleksitas dunia abad ke-21. Ini menjadikannya sebuah lembaga yang relevan, dinamis, dan progresif, selalu berada di garis depan kemajuan.</p>
+
+                <p>Dalam artikel ini, kita akan menyelami lebih dalam tentang berbagai aspek yang menjadikan UNAM begitu istimewa. Kita akan menelusuri sejarahnya yang panjang dan berliku, memahami visi dan misinya yang kuat, mengulas keunggulan akademiknya yang mencakup berbagai disiplin ilmu, menjelajahi keindahan dan fungsionalitas kampusnya, serta merasakan denyut nadi kehidupan mahasiswanya yang kaya. Lebih lanjut, kita akan membahas dampak sosial dan budaya UNAM yang melampaui batas-batas akademik, serta tantangan dan prospek masa depannya dalam lanskap pendidikan global yang terus berubah. UNAM adalah cerminan dari semangat Meksiko: kaya akan sejarah, penuh dengan vitalitas, dan berpandangan jauh ke depan.</p>
+
+                <p>Pada intinya, UNAM adalah sebuah institusi yang melambangkan pengejaran keunggulan, komitmen terhadap kebebasan berpikir, dan dedikasi untuk melayani masyarakat. Melalui setiap program, setiap penelitian, setiap acara budaya, dan setiap interaksi di koridor-koridornya, UNAM terus menegaskan posisinya sebagai jantung intelektual Meksiko dan kontributor penting bagi khazanah pengetahuan dunia. Memahami UNAM berarti memahami sebagian besar dari apa yang membuat Meksiko begitu unik dan berpengaruh di kancah global. Keberadaannya adalah pengingat konstan akan kekuatan pendidikan dan pentingnya otonomi intelektual dalam membentuk masa depan yang lebih baik.</p>
+            </section>
+
+            <section>
+                <h2>Sejarah Singkat: Dari Royal Charter hingga Otonomi Modern</h2>
+                <p>Sejarah UNAM adalah narasi yang mencerminkan perkembangan peradaban di benua Amerika. Akar-akarnya membentang hingga tahun 1551, ketika Raja Spanyol Philip II mengeluarkan Royal Charter untuk mendirikan <em>Real y Pontificia Universidad de México</em>. Universitas ini didirikan dengan model Universitas Salamanca, Spanyol, dan tujuan utamanya adalah untuk mendidik para pendeta dan administrator kolonial, serta untuk menyebarkan ajaran Katolik di wilayah koloni Spanyol Baru. Selama periode kolonial, universitas ini menjadi pusat pembelajaran yang penting, menawarkan studi dalam teologi, hukum, kedokteran, dan seni.</p>
+
+                <p>Dengan berakhirnya era kolonial dan dimulainya periode kemerdekaan Meksiko pada awal abad ke-19, universitas menghadapi masa-masa yang penuh gejolak. Politik domestik yang tidak stabil, perebutan kekuasaan, dan pergeseran ideologi menyebabkan universitas ditutup dan dibuka kembali beberapa kali sepanjang abad ke-19. Liberal dan konservatif seringkali memiliki pandangan yang berbeda tentang peran dan struktur pendidikan tinggi, yang memicu fluktuasi dalam keberadaan institusi ini. Meskipun demikian, semangat pendidikan dan keilmuan tidak pernah padam sepenuhnya, selalu menemukan cara untuk bangkit kembali di tengah badai perubahan politik.</p>
+
+                <p>Titik balik penting terjadi pada awal abad ke-20. Pada tahun 1910, di bawah kepemimpinan Justo Sierra, Menteri Pendidikan pada masa itu, universitas didirikan kembali sebagai <em>Universidad Nacional de México</em>. Rekonstruksi ini dilakukan dengan visi yang lebih modern dan inklusif, bertujuan untuk menyatukan berbagai sekolah tinggi dan fakultas yang tersebar menjadi satu entitas universitas yang komprehensif. Sierra membayangkan sebuah universitas yang akan menjadi pendorong kemajuan nasional, mencetak profesional yang mampu membangun negara yang baru merdeka, serta melestarikan dan mengembangkan budaya Meksiko yang kaya.</p>
+
+                <p>Namun, perjuangan paling signifikan untuk UNAM adalah perebutan otonomi. Pada tahun 1929, setelah serangkaian protes mahasiswa dan negosiasi intensif dengan pemerintah, universitas akhirnya diberikan otonomi penuh. Peristiwa ini menandai kelahiran <em>Universidad Nacional Autónoma de México</em>, dengan "Autónoma" ditambahkan untuk menekankan kemerdekaannya dari intervensi politik langsung. Otonomi ini memberikan UNAM hak untuk mengatur kurikulumnya sendiri, memilih rektor dan stafnya secara internal, serta mengelola anggarannya sendiri, sebuah kebebasan yang sangat penting untuk menjaga integritas akademik dan kebebasan berpikir. Ini adalah kemenangan besar bagi komunitas akademik dan prinsip-prinsip pendidikan yang bebas.</p>
+
+                <p>Sejak saat itu, UNAM telah berkembang pesat. Pada pertengahan abad ke-20, pembangunan Ciudad Universitaria (CU) di selatan Kota Meksiko menjadi manifestasi fisik dari ambisi dan pertumbuhan universitas. Dirancang oleh arsitek terkemuka Meksiko dan diresmikan pada tahun 1952, CU adalah proyek monumental yang memadukan arsitektur modern dengan seni muralis Meksiko, menciptakan kampus yang fungsional sekaligus artistik. Pembangunan CU memungkinkan UNAM untuk mengkonsolidasikan banyak fakultas dan departemen yang sebelumnya tersebar, menciptakan lingkungan yang kohesif untuk pembelajaran dan penelitian. Ini juga menjadi simbol kebanggaan nasional.</p>
+
+                <p>Melalui perjuangan, adaptasi, dan pertumbuhan, UNAM telah mengukuhkan posisinya sebagai salah satu institusi pendidikan tinggi terkemuka di Amerika Latin dan dunia. Sejarahnya yang kaya adalah bukti dari resiliensi dan komitmennya terhadap misi pendidikan, penelitian, dan penyebaran budaya. Setiap fase dalam sejarah UNAM telah meninggalkan jejak yang membentuk identitasnya saat ini: sebuah institusi yang menghargai kebebasan berpikir, mempromosikan keunggulan akademik, dan berdedikasi untuk melayani masyarakat Meksiko dan komunitas global. Perjalanan dari universitas kolonial hingga pusat otonom modern adalah kisah evolusi yang inspiratif.</p>
+
+                <p>Bahkan di tengah perubahan sosial, politik, dan ekonomi yang terus-menerus, UNAM telah berhasil mempertahankan relevansinya dan bahkan meningkatkan pengaruhnya. Ini dicapai melalui kemampuannya untuk beradaptasi tanpa mengorbankan nilai-nilai intinya. Dari menjadi institusi elit kolonial hingga menjadi universitas rakyat yang inklusif, UNAM telah berevolusi seiring dengan evolusi negara yang dilayaninya. Sejarahnya adalah pelajaran tentang bagaimana sebuah institusi dapat bertahan dan berkembang melalui berabad-abad, menjadi saksi bisu dan agen aktif dalam pembentukan sebuah bangsa.</p>
+            </section>
+
+            <section>
+                <h2>Visi dan Misi: Pilar Komitmen Akademik dan Sosial</h2>
+                <p>Visi dan misi UNAM adalah inti dari keberadaannya, mencerminkan tujuan mendalam dan komitmen luas terhadap masyarakat. Sebagai universitas nasional dan otonom, UNAM tidak hanya bertanggung jawab untuk mendidik individu tetapi juga untuk berkontribusi pada kemajuan bangsa dan peradaban secara keseluruhan. Misi utamanya dapat dipecah menjadi tiga pilar fundamental: pengajaran, penelitian, dan penyebaran budaya. Ketiga pilar ini saling terkait dan saling menguatkan, membentuk identitas UNAM sebagai institusi multidimensional.</p>
+
+                <h3>Pengajaran: Membentuk Pemimpin Masa Depan</h3>
+                <p>Salah satu misi inti UNAM adalah menyediakan pendidikan tinggi yang berkualitas. Ini mencakup spektrum luas disiplin ilmu, dari humaniora dan seni hingga ilmu alam dan teknik, dari ilmu sosial hingga ilmu kesehatan. UNAM berkomitmen untuk mencetak lulusan yang tidak hanya memiliki keahlian teknis yang kuat dalam bidangnya tetapi juga memiliki pemahaman kritis tentang dunia, etika yang tinggi, dan rasa tanggung jawab sosial. Kurikulum dirancang untuk mendorong pemikiran independen, kreativitas, dan kapasitas untuk memecahkan masalah kompleks yang dihadapi masyarakat.</p>
+                <p>Sistem pengajaran di UNAM menekankan kombinasi antara teori dan praktik, mendorong mahasiswa untuk terlibat aktif dalam pembelajaran mereka. Fasilitas modern, perpustakaan yang luas, dan laboratorium yang lengkap mendukung proses ini. Dosen-dosen UNAM, banyak di antaranya adalah peneliti terkemuka di bidangnya, membawa wawasan terbaru dari dunia penelitian langsung ke ruang kelas, memastikan bahwa pendidikan yang diberikan selalu mutakhir dan relevan. Ini menciptakan lingkungan belajar yang dinamis di mana mahasiswa dapat tumbuh secara intelektual dan personal.</p>
+                <p>UNAM juga memiliki komitmen kuat terhadap inklusivitas dan aksesibilitas. Berbagai program beasiswa dan dukungan sosial tersedia untuk memastikan bahwa mahasiswa dari semua latar belakang ekonomi memiliki kesempatan yang sama untuk mendapatkan pendidikan berkualitas tinggi. Ini adalah bagian dari filosofi universitas untuk melayani seluruh lapisan masyarakat Meksiko, memberikan kesempatan bagi individu-individu berbakat untuk meraih potensi penuh mereka, tanpa terhalang oleh kendala finansial.</p>
+
+                <h3>Penelitian: Menjelajahi Batas-Batas Pengetahuan</h3>
+                <p>Sebagai universitas riset, UNAM menempatkan penekanan yang sangat besar pada penciptaan pengetahuan baru. Misi penelitiannya adalah untuk melakukan penyelidikan ilmiah, teknologi, dan humanistik yang inovatif, yang tidak hanya memperkaya pemahaman kita tentang dunia tetapi juga menawarkan solusi untuk masalah-masalah paling mendesak yang dihadapi Meksiko dan umat manusia. Dari penelitian tentang perubahan iklim hingga studi tentang penyakit kronis, dari eksplorasi sejarah kuno Meksiko hingga pengembangan teknologi baru, peneliti UNAM berada di garis depan berbagai disiplin ilmu.</p>
+                <p>UNAM memiliki puluhan pusat dan institut penelitian yang tersebar di berbagai bidang, mulai dari fisika dan kimia hingga biologi, geografi, astronomi, ilmu sosial, dan humaniora. Lingkungan penelitian di UNAM sangat kolaboratif, mendorong kerja sama antar-disiplin dan kemitraan dengan institusi lain, baik di dalam maupun luar negeri. Hasil penelitian ini sering dipublikasikan dalam jurnal-jurnal ilmiah internasional bergengsi, berkontribusi pada diskursus global, dan seringkali juga diaplikasikan secara praktis untuk meningkatkan kualitas hidup masyarakat.</p>
+                <p>Investasi dalam infrastruktur penelitian dan pengembangan sumber daya manusia merupakan prioritas bagi UNAM. Universitas ini menarik para peneliti terkemuka dari seluruh dunia dan menyediakan fasilitas canggih yang diperlukan untuk melakukan penelitian kelas dunia. Komitmen terhadap penelitian ini tidak hanya meningkatkan reputasi akademik UNAM tetapi juga menjadikannya agen penting dalam inovasi dan pengembangan kapasitas ilmiah dan teknologi nasional.</p>
+
+                <h3>Penyebaran Budaya: Memperkaya Spirit Masyarakat</h3>
+                <p>Pilar ketiga misi UNAM adalah penyebaran budaya. Universitas ini memahami bahwa perannya melampaui ruang kelas dan laboratorium; ia juga merupakan penjaga dan promotor kekayaan budaya Meksiko. UNAM aktif dalam menyelenggarakan berbagai kegiatan budaya seperti konser, pameran seni, pertunjukan teater, festival film, dan lokakarya. Teater, museum, ruang konser, dan galeri yang dikelola oleh UNAM terbuka untuk umum, menjadi pusat kehidupan budaya bagi masyarakat Kota Meksiko dan sekitarnya.</p>
+                <p>Melalui kegiatan-kegiatan ini, UNAM bertujuan untuk mendemokratisasi akses terhadap seni dan budaya, memperkaya kehidupan spiritual dan intelektual masyarakat. Ini juga merupakan cara untuk melestarikan dan mempromosikan warisan budaya Meksiko yang sangat beragam, dari tradisi pra-Hispanik hingga ekspresi seni kontemporer. Universitas percaya bahwa paparan terhadap seni dan budaya adalah komponen penting dari pendidikan holistik dan pembentukan warga negara yang berbudaya dan berempati.</p>
+                <p>Selain itu, UNAM juga menerbitkan berbagai buku, jurnal, dan majalah yang mencakup spektrum luas topik, dari sastra dan filsafat hingga ilmu pengetahuan. Penerbitan ini tidak hanya berfungsi sebagai media untuk menyebarkan hasil penelitian tetapi juga sebagai platform untuk mempromosikan literasi dan pemikiran kritis di kalangan masyarakat luas. Dengan demikian, UNAM menjadi kekuatan yang kuat dalam membentuk lanskap intelektual dan budaya Meksiko, menjembatani kesenjangan antara dunia akademik dan publik.</p>
+
+                <p>Secara keseluruhan, visi dan misi UNAM berpusat pada gagasan bahwa pendidikan adalah alat untuk transformasi, baik bagi individu maupun masyarakat. Dengan berpegang teguh pada prinsip-prinsip otonomi, kebebasan berpikir, dan tanggung jawab sosial, UNAM terus berfungsi sebagai pusat vital bagi pengajaran, penelitian, dan penyebaran budaya, membentuk masa depan Meksiko dan memberikan kontribusi yang berarti bagi dunia global. Setiap aspek dari operasi universitas ini dirancang untuk mencapai tujuan-tujuan luhur ini, menjadikannya sebuah model institusi pendidikan tinggi yang komprehensif dan berdampak.</p>
+            </section>
+
+            <svg class="article-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi buku terbuka dengan simbol otak dan lampu pijar, melambangkan pengetahuan, penelitian, dan inovasi di UNAM.">
+                <rect x="0" y="0" width="100" height="100" fill="white"/>
+                <!-- Buku -->
+                <path d="M20 25 H80 V75 H20 Z M20 25 L50 15 L80 25 M20 75 L50 85 L80 75" fill="#e0f2f7" stroke="#007bff" stroke-width="2"/>
+                <path d="M22 28 C30 20 40 20 50 20 C60 20 70 20 78 28 C78 35 78 65 78 72 C70 80 60 80 50 80 C40 80 30 80 22 72 Z" fill="white" stroke="#007bff" stroke-width="1.5"/>
+                <!-- Otak (simbol pengetahuan) di dalam buku -->
+                <path d="M40 45 Q35 40 30 45 Q25 50 30 55 Q35 60 40 55 Q45 50 40 45 Z M60 45 Q65 40 70 45 Q75 50 70 55 Q65 60 60 55 Q55 50 60 45 Z M45 40 C42 35 38 35 35 40 C32 45 32 55 35 60 C38 65 42 65 45 60 C48 55 48 45 45 40 Z M55 40 C58 35 62 35 65 40 C68 45 68 55 65 60 C62 65 58 65 55 60 C52 55 52 45 55 40 Z M48 48 C48 45 52 45 52 48 C52 51 48 51 48 48 Z" fill="#28a745" opacity="0.7"/>
+                <!-- Lampu Pijar (simbol ide) -->
+                <circle cx="50" cy="30" r="8" fill="#ffc107" stroke="#e0f2f7" stroke-width="1"/>
+                <path d="M50 38 L50 42 M47 42 H53 M48 45 H52" stroke="#ffc107" stroke-width="2"/>
+            </svg>
+            <p class="image-caption">Ilustrasi buku terbuka dengan simbol otak dan lampu pijar, melambangkan pengetahuan, penelitian, dan inovasi yang menjadi inti misi UNAM.</p>
+
+            <section>
+                <h2>Keunggulan Akademik: Ragam Disiplin dan Kualitas Kelas Dunia</h2>
+                <p>Keunggulan akademik UNAM adalah salah satu alasan utama mengapa institusi ini diakui secara luas, baik di tingkat nasional maupun internasional. Dengan reputasi yang dibangun selama berabad-abad, UNAM secara konsisten menduduki peringkat teratas di antara universitas-universitas di Amerika Latin dan sering kali masuk dalam daftar universitas terbaik dunia. Keunggulan ini tidak hanya terletak pada infrastruktur fisiknya yang mengesankan, tetapi juga pada kualitas program studi, kaliber dosen, intensitas penelitian, dan lingkungan intelektual yang mendukung pertumbuhan akademik.</p>
+
+                <h3>Fakultas dan Program Studi yang Beragam</h3>
+                <p>UNAM menawarkan spektrum program studi yang sangat luas, mencakup hampir setiap bidang pengetahuan yang dapat dibayangkan. Institusi ini terdiri dari puluhan fakultas, sekolah, dan pusat studi yang masing-masing memiliki fokus spesifik. Dari ilmu pengetahuan alam dan matematika hingga humaniora, seni rupa, ilmu sosial, ilmu kesehatan, teknik, dan arsitektur, UNAM menyediakan pendidikan dari jenjang sarjana hingga pascasarjana (magister dan doktor). Keragaman ini memungkinkan mahasiswa untuk mengejar minat mereka di berbagai disiplin ilmu, seringkali dalam konteks interdisipliner yang inovatif.</p>
+                <ul>
+                    <li><strong>Ilmu Alam dan Matematika:</strong> Fakultas Ilmu, Matematika, Fisika, Kimia, Biologi, Geologi. Program-program ini dikenal karena kurikulumnya yang ketat dan peluang penelitian yang signifikan.</li>
+                    <li><strong>Humaniora dan Seni:</strong> Fakultas Filsafat dan Sastra, Sekolah Nasional Seni Rupa, Sekolah Nasional Musik, Pusat Penelitian Teater. UNAM adalah pusat penting untuk studi humaniora dan seni di Amerika Latin, dengan fokus pada pemikiran kritis dan ekspresi kreatif.</li>
+                    <li><strong>Ilmu Sosial dan Hukum:</strong> Fakultas Hukum, Ilmu Politik dan Sosial, Ekonomi, Akuntansi dan Administrasi. Program-program ini mempersiapkan mahasiswa untuk berkarir di pemerintahan, bisnis, dan organisasi nirlaba, dengan penekanan pada pemahaman mendalam tentang masyarakat.</li>
+                    <li><strong>Ilmu Kesehatan:</strong> Fakultas Kedokteran, Kedokteran Gigi, Kedokteran Hewan dan Zooteknik, Keperawatan dan Kebidanan, Psikologi. UNAM memiliki fasilitas medis dan klinik yang melayani masyarakat sekaligus menjadi tempat pelatihan bagi para profesional kesehatan.</li>
+                    <li><strong>Teknik dan Arsitektur:</strong> Fakultas Teknik, Arsitektur, Desain Industri. Program-program ini fokus pada inovasi teknologi, desain berkelanjutan, dan solusi praktis untuk masalah-masalah rekayasa dan urban.</li>
+                </ul>
+                <p>Kurikulum di setiap program terus diperbarui untuk mencerminkan perkembangan terbaru dalam bidang masing-masing. UNAM sangat memperhatikan relevansi programnya dengan kebutuhan masyarakat dan pasar kerja, memastikan bahwa lulusannya tidak hanya memiliki pengetahuan teoretis tetapi juga keterampilan praktis yang sangat dicari.</p>
+
+                <h3>Pusat Penelitian dan Inovasi</h3>
+                <p>UNAM adalah raksasa penelitian di Amerika Latin, dengan lebih dari 40 institut dan pusat penelitian yang didedikasikan untuk menghasilkan pengetahuan baru di berbagai bidang. Lembaga-lembaga ini menarik para peneliti terkemuka dari seluruh dunia dan dilengkapi dengan teknologi paling canggih. Penelitian yang dilakukan di UNAM seringkali memiliki dampak signifikan pada kebijakan publik, inovasi teknologi, dan pemahaman ilmiah global.</p>
+                <ul>
+                    <li><strong>Ilmu Fisika dan Matematika:</strong> Institut Fisika, Kimia, Astronomi, Ilmu Nuklir.</li>
+                    <li><strong>Ilmu Biologi dan Biomedis:</strong> Institut Biologi, Bioteknologi, Fisiologi Seluler, Biomedika, Ekologi.</li>
+                    <li><strong>Ilmu Bumi:</strong> Institut Geofisika, Geologi, Geografi.</li>
+                    <li><strong>Ilmu Sosial dan Humaniora:</strong> Institut Penelitian Sosial, Penelitian Filologi, Penelitian Sejarah, Penelitian Estetika.</li>
+                    <li><strong>Teknologi dan Lingkungan:</strong> Pusat Penelitian Sains Lingkungan, Pusat Ilmu Atmosfer.</li>
+                </ul>
+                <p>Kolaborasi antar-institusi dan antar-disiplin adalah ciri khas lingkungan penelitian UNAM. Banyak proyek melibatkan tim dari berbagai fakultas dan pusat, serta kemitraan dengan universitas lain, sektor industri, dan lembaga pemerintah. Hasilnya adalah produksi yang luar biasa dari publikasi ilmiah, paten, dan penemuan yang berkontribusi pada kemajuan di banyak bidang.</p>
+                <p>UNAM juga merupakan pemimpin dalam inovasi, dengan banyak penelitian yang diterjemahkan menjadi aplikasi praktis. Ini termasuk pengembangan obat-obatan baru, material canggih, teknologi energi terbarukan, dan solusi untuk masalah pertanian. Universitas memiliki mekanisme untuk mendukung transfer teknologi dan kewirausahaan di kalangan mahasiswa dan penelitinya, mendorong penciptaan perusahaan rintisan dan implementasi inovasi di dunia nyata.</p>
+
+                <h3>Dosen dan Lingkungan Intelektual</h3>
+                <p>Kualitas pengajaran dan penelitian di UNAM sangat didukung oleh dosen-dosennya yang luar biasa. Banyak profesor UNAM adalah ahli terkemuka di bidangnya, dengan publikasi internasional, penghargaan bergengsi, dan keterlibatan aktif dalam proyek-proyek penelitian berskala besar. Mereka tidak hanya mengajar di kelas tetapi juga berfungsi sebagai mentor bagi mahasiswa, membimbing mereka dalam proyek penelitian, tesis, dan karir akademik mereka.</p>
+                <p>Lingkungan intelektual di UNAM juga sangat hidup. Forum, seminar, konferensi, dan lokakarya diadakan secara teratur, menampilkan pembicara dari berbagai latar belakang dan disiplin ilmu. Ini menciptakan atmosfer di mana ide-ide dapat dipertukarkan secara bebas, debat intelektual didorong, dan perspektif baru terus-menerus muncul. Mahasiswa didorong untuk berpartisipasi aktif dalam kegiatan-kegiatan ini, memperluas wawasan mereka di luar kurikulum formal.</p>
+                <p>Melalui kombinasi program studi yang komprehensif, penelitian mutakhir, dan fakultas yang berkualitas tinggi, UNAM terus menegaskan komitmennya terhadap keunggulan akademik. Ini adalah tempat di mana batas-batas pengetahuan terus didorong, di mana generasi baru pemimpin dan inovator dibentuk, dan di mana kontribusi signifikan terhadap kemajuan manusia dibuat secara terus-menerus. UNAM tidak hanya mendidik; ia menginspirasi dan memberdayakan.</p>
+                <p>Para alumni UNAM banyak yang menjadi pemimpin di bidangnya masing-masing, mulai dari penerima hadiah Nobel, presiden, ilmuwan terkemuka, hingga seniman dan budayawan yang karyanya dikenal luas. Ini adalah bukti nyata dari kualitas pendidikan dan bimbingan yang mereka terima selama di universitas. Keberhasilan alumni ini juga terus menginspirasi generasi mahasiswa berikutnya untuk mencapai standar keunggulan yang sama.</p>
+            </section>
+
+            <section>
+                <h2>Kampus dan Infrastruktur: Ciudad Universitaria dan Beyond</h2>
+                <p>Salah satu aspek paling ikonik dari UNAM adalah kampusnya, terutama Ciudad Universitaria (CU) di selatan Kota Meksiko. CU bukan hanya sebuah kompleks bangunan; ia adalah sebuah karya seni arsitektur dan urbanisme yang diakui secara global, sebuah situs yang sarat makna sejarah, budaya, dan pendidikan. Pembangunan CU adalah proyek ambisius pada pertengahan abad ke-20 yang bertujuan untuk mengkonsolidasikan berbagai fakultas dan institut UNAM yang sebelumnya tersebar di seluruh kota menjadi satu lokasi terpadu, yang kondusif untuk belajar, mengajar, dan meneliti.</p>
+
+                <h3>Ciudad Universitaria (CU): Situs Warisan Dunia UNESCO</h3>
+                <p>Diresmikan pada tahun 1952, CU adalah mahakarya arsitektur modern yang memadukan prinsip-prinsip fungsionalitas dengan kekayaan ekspresi artistik Meksiko. Kampus ini dirancang oleh beberapa arsitek terkemuka Meksiko, termasuk Mario Pani dan Enrique del Moral. Yang paling menonjol dari CU adalah integrasi seni muralis ke dalam arsitektur, sebuah ciri khas dari gerakan seni Meksiko pasca-revolusioner. Mural-mural megah yang menghiasi dinding-dinding bangunan utama menceritakan kisah sejarah Meksiko, kemajuan ilmu pengetahuan, dan perjuangan rakyatnya. Ini menjadikan setiap sudut kampus sebuah galeri terbuka, sebuah pelajaran visual yang tiada henti.</p>
+                <p>Pada tahun 2007, UNESCO secara resmi mengakui CU sebagai Situs Warisan Dunia, menyoroti nilainya yang luar biasa sebagai contoh arsitektur modern abad ke-20 dan perpaduan seni publik yang monumental. Pengakuan ini bukan hanya tentang estetika bangunan, tetapi juga tentang bagaimana kampus ini berfungsi sebagai model perencanaan kota yang inovatif dan sebagai cerminan identitas budaya sebuah bangsa.</p>
+                <p>Beberapa bangunan paling terkenal di CU meliputi:</p>
+                <ul>
+                    <li><strong>Perpustakaan Pusat (Biblioteca Central):</strong> Ini adalah salah satu ikon paling dikenal dari CU. Fasadnya dihiasi dengan mural kolosal oleh Juan O'Gorman yang menggambarkan sejarah Meksiko, dari era pra-Hispanik hingga modern. Mural ini terbuat dari batu alam berwarna-warni, menjadikannya salah satu mural terbesar di dunia yang terbuat dari mozaik batu. Perpustakaan ini tidak hanya indah tetapi juga merupakan pusat pengetahuan yang masif, menyimpan jutaan koleksi buku dan dokumen.</li>
+                    <li><strong>Rektorat (Rectoría):</strong> Gedung Rektorat juga dihiasi dengan mural-mural penting karya David Alfaro Siqueiros, salah satu seniman muralis terbesar Meksiko. Mural-mural ini merepresentasikan aspirasi pendidikan dan perjuangan sosial.</li>
+                    <li><strong>Stadion Olimpiade Universitas (Estadio Olímpico Universitario):</strong> Dibangun untuk Pan American Games 1955 dan menjadi tuan rumah Olimpiade Musim Panas 1968, stadion ini adalah salah satu yang paling signifikan di Meksiko. Arsitekturnya yang inovatif, yang mengintegrasikan topografi alami, juga dihiasi dengan relief oleh Diego Rivera.</li>
+                    <li><strong>Museum dan Pusat Budaya:</strong> CU memiliki berbagai museum, seperti Museo Universitario de Arte Contemporáneo (MUAC), yang menampilkan seni modern dan kontemporer, dan Universum, museum ilmu pengetahuan interaktif. Pusat Kebudayaan Universitas (Centro Cultural Universitario) adalah kompleks besar yang mencakup teater, ruang konser, bioskop, dan galeri seni, menjadikannya pusat aktivitas budaya yang dinamis bagi seluruh kota.</li>
+                </ul>
+                <p>Selain bangunan-bangunan megah ini, CU juga memiliki area hijau yang luas, taman-taman, dan jalur pejalan kaki yang menciptakan lingkungan yang menyenangkan dan inspiratif bagi mahasiswa, staf, dan pengunjung. Pepohonan rindang dan area terbuka memungkinkan ruang untuk relaksasi dan refleksi, melengkapi intensitas kehidupan akademik.</p>
+
+                <h3>Infrastruktur Akademik dan Penelitian</h3>
+                <p>Di luar daya tarik visualnya, infrastruktur UNAM dirancang untuk mendukung keunggulan akademik dan penelitian. Ini termasuk:</p>
+                <ul>
+                    <li><strong>Laboratorium Mutakhir:</strong> Berbagai fakultas dan institut dilengkapi dengan laboratorium canggih yang mendukung penelitian di bidang biologi, kimia, fisika, teknik, kedokteran, dan banyak lagi. Ini memungkinkan peneliti untuk melakukan eksperimen mutakhir dan mengembangkan inovasi.</li>
+                    <li><strong>Perpustakaan Khusus:</strong> Selain Perpustakaan Pusat yang monumental, setiap fakultas dan institut memiliki perpustakaan spesialisnya sendiri, menyediakan akses ke koleksi yang mendalam dan relevan dengan disiplin ilmu masing-masing. Sistem perpustakaan UNAM adalah salah satu yang terbesar di Amerika Latin.</li>
+                    <li><strong>Pusat Komputasi dan Teknologi Informasi:</strong> UNAM terus berinvestasi dalam teknologi informasi, menyediakan akses internet berkecepatan tinggi, pusat data, dan perangkat lunak canggih untuk mendukung kegiatan akademik dan administratif. Kelas-kelas dilengkapi dengan proyektor, papan pintar, dan fasilitas multimedia.</li>
+                    <li><strong>Fasilitas Olahraga:</strong> Selain Stadion Olimpiade, CU memiliki berbagai fasilitas olahraga lainnya, termasuk gimnasium, kolam renang, lapangan tenis, dan lapangan sepak bola, mendukung gaya hidup sehat dan aktivitas rekreasi bagi komunitas universitas.</li>
+                    <li><strong>Fasilitas Kesehatan:</strong> UNAM juga memiliki layanan kesehatan mahasiswa, termasuk klinik dan pusat konseling, untuk memastikan kesejahteraan fisik dan mental mahasiswanya.</li>
+                </ul>
+
+                <h3>Kampus-Kampus Lain dan Jangkauan Nasional</h3>
+                <p>Meskipun Ciudad Universitaria adalah pusat utamanya, UNAM bukan hanya CU. Universitas ini memiliki beberapa kampus satelit dan sekolah di berbagai lokasi di Kota Meksiko dan di negara bagian lain di Meksiko. Ini termasuk:</p>
+                <ul>
+                    <li><strong>FES (Facultades de Estudios Superiores):</strong> Kampus-kampus seperti FES Acatlán, FES Aragón, FES Iztacala, FES Cuautitlán, dan FES Zaragoza menawarkan berbagai program studi dan melayani komunitas mahasiswa yang lebih luas di luar pusat kota.</li>
+                    <li><strong>Sekolah Persiapan (Escuela Nacional Preparatoria - ENP dan Colegio de Ciencias y Humanidades - CCH):</strong> UNAM juga mengelola sistem sekolah menengah atas (preparatoria) yang sangat dihormati, yang berfungsi sebagai jembatan bagi banyak siswanya untuk melanjutkan pendidikan tinggi di UNAM.</li>
+                    <li><strong>Unit Penelitian dan Ekstensi Regional:</strong> UNAM memiliki unit-unit penelitian dan pusat studi yang tersebar di berbagai negara bagian di Meksiko, seperti Morelia, Yucatán, dan Ensenada, Baja California. Unit-unit ini berfokus pada isu-isu regional dan berkontribusi pada pembangunan lokal.</li>
+                </ul>
+                <p>Jangkauan geografis UNAM ini memungkinkan universitas untuk memiliki dampak yang lebih luas di seluruh Meksiko, membawa pendidikan berkualitas dan penelitian ke berbagai komunitas, dan mengakomodasi kebutuhan pendidikan yang beragam di seluruh negara. Ini mencerminkan komitmen UNAM sebagai universitas nasional yang melayani seluruh rakyat Meksiko.</p>
+                <p>Secara keseluruhan, kampus dan infrastruktur UNAM adalah cerminan dari ambisi dan komitmennya. Mereka tidak hanya menyediakan ruang fungsional untuk pendidikan dan penelitian, tetapi juga berfungsi sebagai simbol budaya, arsitektur, dan identitas Meksiko. Dari mural-mural yang menceritakan sejarah hingga laboratorium-laboratorium yang memajukan sains, setiap aspek infrastruktur UNAM dirancang untuk mendukung misinya yang luas dan mulia.</p>
+            </section>
+
+            <svg class="article-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi gaya arsitektur mural ikonik Perpustakaan Pusat UNAM dengan langit biru cerah, melambangkan warisan budaya dan pengetahuan.">
+                <rect x="0" y="0" width="100" height="100" fill="#e0f2f7"/>
+                <!-- Sky -->
+                <rect x="0" y="0" width="100" height="50" fill="#a8dadc"/>
+                <!-- Building Base -->
+                <rect x="15" y="40" width="70" height="50" fill="#f1faee" stroke="#1d3557" stroke-width="1"/>
+                <!-- Mural sections (simplified) -->
+                <rect x="20" y="45" width="20" height="40" fill="#457b9d"/>
+                <rect x="40" y="45" width="20" height="40" fill="#e63946"/>
+                <rect x="60" y="45" width="20" height="40" fill="#f4a261"/>
+                <!-- Top details (simplified) -->
+                <rect x="15" y="35" width="70" height="5" fill="#1d3557"/>
+                <circle cx="30" cy="30" r="5" fill="#f1faee"/>
+                <circle cx="50" cy="30" r="5" fill="#f1faee"/>
+                <circle cx="70" cy="30" r="5" fill="#f1faee"/>
+            </svg>
+            <p class="image-caption">Ilustrasi arsitektur ikonik Perpustakaan Pusat UNAM yang dihiasi mural kolosal, melambangkan perpaduan seni, sejarah, dan ilmu pengetahuan di kampus.</p>
+
+            <section>
+                <h2>Kehidupan Mahasiswa: Dinamika, Budaya, dan Komunitas</h2>
+                <p>Kehidupan mahasiswa di UNAM adalah pengalaman yang kaya dan multidimensional, jauh melampaui batas-batas akademik di ruang kelas dan laboratorium. Sebagai sebuah komunitas yang sangat besar dan beragam, UNAM menawarkan lingkungan yang dinamis di mana mahasiswa tidak hanya belajar tetapi juga tumbuh, berinteraksi, dan berpartisipasi dalam berbagai kegiatan yang membentuk identitas dan perspektif mereka. Ini adalah masa di mana persahabatan seumur hidup terjalin, ide-ide baru ditemukan, dan aspirasi pribadi serta profesional mulai terbentuk.</p>
+
+                <h3>Organisasi dan Kegiatan Kemahasiswaan</h3>
+                <p>UNAM memiliki ribuan mahasiswa, yang berarti ada banyak sekali organisasi dan kelompok mahasiswa yang mewakili berbagai minat dan tujuan. Dari klub akademik yang berfokus pada bidang studi tertentu hingga kelompok seni dan budaya, organisasi sosial, hingga perkumpulan politik, ada ruang bagi setiap mahasiswa untuk menemukan tempatnya dan menyalurkan minatnya. Keaktifan organisasi mahasiswa ini adalah salah satu ciri khas UNAM, mencerminkan semangat partisipasi dan ekspresi bebas.</p>
+                <ul>
+                    <li><strong>Kelompok Studi dan Akademik:</strong> Mahasiswa sering membentuk kelompok studi untuk mata kuliah tertentu, atau bergabung dengan perkumpulan yang berafiliasi dengan fakultas mereka, seperti kelompok debat, klub riset, atau perkumpulan insinyur. Ini tidak hanya membantu dalam pembelajaran tetapi juga membangun jaringan profesional awal.</li>
+                    <li><strong>Seni dan Budaya:</strong> UNAM adalah pusat budaya, dan mahasiswa sangat terlibat dalam kegiatan seni. Ada kelompok teater, paduan suara, orkestra, kelompok tari, klub film, dan lokakarya seni rupa. Banyak mahasiswa UNAM mengembangkan bakat artistik mereka di samping studi akademik mereka, seringkali tampil di panggung kampus atau galeri.</li>
+                    <li><strong>Organisasi Sosial dan Lingkungan:</strong> Banyak mahasiswa UNAM memiliki kesadaran sosial yang tinggi dan terlibat dalam organisasi yang fokus pada isu-isu sosial, lingkungan, atau hak asasi manusia. Mereka sering mengadakan kampanye, kegiatan sukarela, atau proyek komunitas untuk memberikan dampak positif.</li>
+                    <li><strong>Perkumpulan Mahasiswa Internasional:</strong> Untuk mahasiswa asing, ada organisasi yang membantu mereka beradaptasi dengan kehidupan di Meksiko dan UNAM, mempromosikan pertukaran budaya, dan memfasilitasi integrasi mereka dalam komunitas universitas.</li>
+                </ul>
+                <p>Partisipasi dalam organisasi-organisasi ini tidak hanya memperkaya pengalaman mahasiswa tetapi juga membantu mereka mengembangkan keterampilan kepemimpinan, kerja tim, dan komunikasi yang sangat berharga di masa depan.</p>
+
+                <h3>Olahraga dan Rekreasi</h3>
+                <p>Kesehatan fisik dan kesejahteraan mental mahasiswa adalah prioritas di UNAM. Kampus Ciudad Universitaria dilengkapi dengan fasilitas olahraga yang sangat baik, memungkinkan mahasiswa untuk berpartisipasi dalam berbagai kegiatan olahraga dan rekreasi.</p>
+                <ul>
+                    <li><strong>Tim Olahraga Universitas:</strong> UNAM memiliki tim olahraga yang sangat kompetitif di berbagai disiplin, termasuk sepak bola (tim “Pumas” adalah salah satu yang paling populer di Meksiko), bola basket, voli, atletik, renang, gulat, dan banyak lagi. Mahasiswa-atlet mewakili universitas dalam kompetisi nasional dan internasional.</li>
+                    <li><strong>Fasilitas Rekreasi:</strong> Selain Stadion Olimpiade, ada banyak lapangan olahraga, gimnasium, kolam renang, dan area terbuka untuk aktivitas santai. Banyak mahasiswa memanfaatkan fasilitas ini untuk berolahraga, menjaga kebugaran, atau hanya bersantai bersama teman-teman.</li>
+                    <li><strong>Kelas Olahraga dan Kebugaran:</strong> Universitas juga menawarkan kelas olahraga dan kebugaran yang terbuka untuk semua mahasiswa, mulai dari yoga dan zumba hingga seni bela diri dan panjat tebing.</li>
+                </ul>
+                <p>Aktivitas olahraga tidak hanya mendorong gaya hidup sehat tetapi juga memupuk rasa kebersamaan dan identitas universitas di antara mahasiswa.</p>
+
+                <h3>Kehidupan Sosial dan Budaya</h3>
+                <p>UNAM adalah sebuah "kota di dalam kota," dengan kafe, restoran, toko buku, dan ruang pertemuan yang tersebar di seluruh kampus. Ini menciptakan suasana yang hidup di mana mahasiswa dapat bersosialisasi, belajar, atau sekadar menikmati waktu luang mereka.</p>
+                <ul>
+                    <li><strong>Acara Budaya:</strong> Universitas secara rutin menyelenggarakan konser musik, pertunjukan teater, pameran seni, festival film, dan lokakarya budaya. Banyak acara ini gratis atau berbiaya rendah dan terbuka untuk seluruh komunitas universitas dan publik. Pusat Kebudayaan Universitas (CCU) adalah titik fokus untuk kegiatan-kegiatan ini.</li>
+                    <li><strong>Tradisi dan Perayaan:</strong> UNAM memiliki tradisi dan perayaannya sendiri, seringkali berpusat pada peringatan peristiwa penting dalam sejarah universitas atau kebudayaan Meksiko. Ini termasuk perayaan hari kemerdekaan, festival hari orang mati, dan acara kelulusan yang meriah.</li>
+                    <li><strong>Publikasi Mahasiswa:</strong> Banyak fakultas atau kelompok mahasiswa memiliki publikasi mereka sendiri, baik cetak maupun digital, yang menjadi forum bagi mahasiswa untuk menulis, mengedit, dan mempublikasikan karya mereka, dari artikel opini hingga puisi dan cerita pendek.</li>
+                </ul>
+                <p>Kehidupan sosial di UNAM juga diperkaya oleh keragaman mahasiswanya. Dengan mahasiswa yang berasal dari seluruh Meksiko dan banyak negara lain, kampus ini adalah melting pot budaya dan perspektif. Interaksi dengan individu dari berbagai latar belakang ini memperluas wawasan mahasiswa dan mempersiapkan mereka untuk menjadi warga negara global.</p>
+
+                <h3>Layanan Pendukung Mahasiswa</h3>
+                <p>UNAM berkomitmen untuk mendukung kesejahteraan dan keberhasilan mahasiswanya. Berbagai layanan tersedia untuk membantu mereka dalam perjalanan akademik dan personal:</p>
+                <ul>
+                    <li><strong>Konseling Akademik:</strong> Penasihat akademik membantu mahasiswa dalam pemilihan mata kuliah, perencanaan karir, dan penanganan tantangan akademik.</li>
+                    <li><strong>Layanan Kesehatan:</strong> Klinik medis kampus menyediakan layanan kesehatan dasar, sementara pusat konseling menawarkan dukungan psikologis untuk masalah kesehatan mental.</li>
+                    <li><strong>Dukungan Disabilitas:</strong> UNAM memiliki program dan fasilitas untuk mendukung mahasiswa dengan disabilitas, memastikan akses yang setara terhadap pendidikan.</li>
+                    <li><strong>Pusat Karir:</strong> Pusat karir membantu mahasiswa dalam pencarian magang, persiapan wawancara, dan eksplorasi peluang kerja setelah lulus.</li>
+                    <li><strong>Beasiswa dan Bantuan Keuangan:</strong> Berbagai program beasiswa dan bantuan keuangan tersedia untuk membantu mahasiswa yang membutuhkan, baik dari universitas itu sendiri maupun dari pihak ketiga.</li>
+                </ul>
+                <p>Melalui kombinasi yang kaya antara kegiatan akademik, ekstrakurikuler, sosial, dan layanan pendukung, UNAM menciptakan lingkungan yang holistik bagi mahasiswanya. Ini adalah tempat di mana mereka tidak hanya mendapatkan gelar tetapi juga membentuk karakter, menemukan passion mereka, dan menjadi bagian dari komunitas yang dinamis dan bersemangat. Pengalaman hidup mahasiswa di UNAM adalah salah satu kenangan paling berharga yang akan mereka bawa sepanjang hidup.</p>
+                <p>Budaya kebebasan berekspresi juga sangat kuat di kalangan mahasiswa UNAM. Kampus seringkali menjadi tempat diskusi hangat tentang isu-isu sosial dan politik, demonstrasi damai, dan forum terbuka yang memungkinkan mahasiswa untuk menyuarakan pendapat dan berpartisipasi dalam pembentukan opini publik. Ini merupakan bagian integral dari pendidikan di UNAM, yang mempersiapkan mahasiswa untuk menjadi warga negara yang aktif dan kritis.</p>
+            </section>
+
+            <svg class="article-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi empat orang mahasiswa yang beragam suku bangsa berjalan santai dengan latar belakang bangunan kampus, melambangkan keberagaman dan dinamika kehidupan mahasiswa di UNAM.">
+                <rect x="0" y="0" width="100" height="100" fill="white"/>
+                <!-- Background buildings -->
+                <rect x="0" y="50" width="100" height="50" fill="#f8f9fa"/>
+                <path d="M10 50 L10 70 L20 70 L20 50 Z" fill="#dee2e6"/>
+                <path d="M70 50 L70 65 L80 65 L80 50 Z" fill="#dee2e6"/>
+                <path d="M30 40 L30 80 L60 80 L60 40 Z" fill="#e0f2f7" stroke="#007bff" stroke-width="0.5"/>
+                <!-- Students (simplified figures) -->
+                <!-- Student 1 (left) -->
+                <circle cx="25" cy="40" r="8" fill="#ffc107"/>
+                <rect x="20" y="48" width="10" height="25" fill="#28a745"/>
+                <!-- Student 2 (middle-left) -->
+                <circle cx="40" cy="38" r="8" fill="#a8dadc"/>
+                <rect x="35" y="46" width="10" height="28" fill="#457b9d"/>
+                <!-- Student 3 (middle-right) -->
+                <circle cx="55" cy="42" r="8" fill="#f1faee"/>
+                <rect x="50" y="50" width="10" height="22" fill="#e63946"/>
+                <!-- Student 4 (right) -->
+                <circle cx="70" cy="40" r="8" fill="#c0c0c0"/>
+                <rect x="65" y="48" width="10" height="25" fill="#f4a261"/>
+                <!-- Ground -->
+                <rect x="0" y="70" width="100" height="30" fill="#ced4da"/>
+            </svg>
+            <p class="image-caption">Ilustrasi sekelompok mahasiswa yang beragam suku bangsa dan latar belakang berinteraksi di lingkungan kampus, mencerminkan kekayaan kehidupan mahasiswa UNAM.</p>
+
+            <section>
+                <h2>Dampak Sosial dan Budaya: Melampaui Batas Akademik</h2>
+                <p>Dampak UNAM terhadap masyarakat Meksiko dan dunia melampaui kontribusi akademiknya semata. Sebagai sebuah institusi nasional, UNAM telah menjadi agen perubahan sosial, penjaga warisan budaya, dan kekuatan pendorong di balik berbagai gerakan intelektual dan artistik. Pengaruhnya terasa di setiap lapisan masyarakat, dari pembentukan kebijakan publik hingga revitalisasi seni tradisional, dari inovasi ilmiah hingga pemberdayaan komunitas.</p>
+
+                <h3>Peran dalam Masyarakat Meksiko</h3>
+                <p>UNAM secara inheren terhubung dengan denyut nadi masyarakat Meksiko. Sebagai universitas publik terbesar di negara itu, ia memiliki tanggung jawab sosial yang mendalam. Banyak program dan inisiatif UNAM dirancang untuk secara langsung mengatasi masalah-masalah sosial yang mendesak, seperti kemiskinan, kesenjangan pendidikan, kesehatan masyarakat, dan keberlanjutan lingkungan. Lulusannya seringkali menjadi pemimpin di sektor publik, swasta, dan nirlaba, membawa perspektif kritis dan solusi inovatif untuk tantangan negara.</p>
+                <ul>
+                    <li><strong>Pembentukan Kebijakan Publik:</strong> Banyak pakar UNAM berfungsi sebagai penasihat pemerintah, memberikan keahlian dalam perumusan kebijakan di berbagai bidang, termasuk ekonomi, pendidikan, kesehatan, dan lingkungan. Penelitian yang dilakukan di universitas seringkali menjadi dasar bagi keputusan kebijakan yang penting.</li>
+                    <li><strong>Layanan Kesehatan Masyarakat:</strong> Fakultas Kedokteran dan Kedokteran Gigi UNAM mengoperasikan klinik dan rumah sakit yang tidak hanya berfungsi sebagai tempat pelatihan bagi mahasiswa tetapi juga menyediakan layanan kesehatan yang terjangkau bagi masyarakat, terutama di daerah yang kurang terlayani.</li>
+                    <li><strong>Pendidikan dan Literasi:</strong> Melalui program-program ekstensi dan penerbitan buku yang terjangkau, UNAM berupaya meningkatkan tingkat literasi dan akses terhadap pengetahuan di seluruh Meksiko, menjembatani kesenjangan antara elit intelektual dan masyarakat umum.</li>
+                    <li><strong>Lingkungan dan Keberlanjutan:</strong> Pusat-pusat penelitian lingkungan UNAM aktif dalam studi tentang perubahan iklim, konservasi keanekaragaman hayati, dan pengembangan energi terbarukan, dengan tujuan untuk mempromosikan praktik-praktik berkelanjutan di seluruh negara.</li>
+                </ul>
+                <p>UNAM juga dikenal sebagai forum penting untuk debat publik dan pemikiran kritis. Kampusnya sering menjadi tempat berkumpul untuk diskusi tentang isu-isu nasional, demonstrasi damai, dan pertukaran ide yang vital bagi demokrasi yang sehat. Ini adalah tempat di mana suara-suara minoritas dapat didengar dan di mana gagasan-gagasan transformatif dapat berkembang.</p>
+
+                <h3>Kontribusi Internasional</h3>
+                <p>Pengaruh UNAM tidak terbatas pada batas-batas Meksiko. Institusi ini memiliki jaringan luas kemitraan internasional dengan universitas dan lembaga penelitian di seluruh dunia. Kolaborasi ini memfasilitasi pertukaran mahasiswa dan dosen, proyek penelitian bersama, dan program gelar ganda, memperkaya pengalaman akademik dan memperluas jangkauan penelitian UNAM secara global.</p>
+                <ul>
+                    <li><strong>Reputasi Akademik Global:</strong> UNAM secara konsisten masuk dalam peringkat universitas terbaik dunia, menarik mahasiswa dan peneliti dari berbagai negara. Reputasi ini didasarkan pada kualitas pengajaran, dampak penelitian, dan kontribusi budaya.</li>
+                    <li><strong>Peran dalam Diplomasi Ilmiah:</strong> Para ilmuwan dan cendekiawan UNAM seringkali mewakili Meksiko dalam forum-forum internasional, berkontribusi pada solusi masalah global seperti kesehatan masyarakat, pembangunan berkelanjutan, dan hubungan internasional.</li>
+                    <li><strong>Studi Amerika Latin:</strong> Sebagai pusat studi Amerika Latin terkemuka, UNAM menarik para sarjana dari seluruh dunia yang ingin memahami lebih dalam tentang sejarah, politik, budaya, dan masyarakat kawasan ini.</li>
+                </ul>
+                <p>UNAM juga adalah anggota aktif dari berbagai jaringan universitas internasional, memperkuat posisinya sebagai pemain kunci dalam lanskap pendidikan tinggi global. Ini memungkinkan UNAM untuk terus belajar dari praktik terbaik internasional dan berkontribusi pada upaya kolektif untuk memajukan pengetahuan dan memahami dunia.</p>
+
+                <h3>Alumni Terkemuka</h3>
+                <p>Dampak paling nyata dari UNAM adalah melalui alumni-alumninya yang telah meraih kesuksesan luar biasa dan memberikan kontribusi signifikan di berbagai bidang. Daftar alumni UNAM mencakup beberapa tokoh paling berpengaruh dalam sejarah Meksiko dan dunia.</p>
+                <ul>
+                    <li><strong>Pemenang Hadiah Nobel:</strong> UNAM bangga menjadi almamater bagi beberapa penerima Hadiah Nobel, termasuk Alfonso García Robles (Perdamaian), Octavio Paz (Sastra), dan Mario Molina (Kimia). Keberhasilan mereka adalah bukti dari lingkungan intelektual yang subur di UNAM.</li>
+                    <li><strong>Presiden Meksiko:</strong> Banyak mantan presiden Meksiko adalah alumni UNAM, mencerminkan peran universitas dalam membentuk kepemimpinan politik negara.</li>
+                    <li><strong>Ilmuwan dan Peneliti Terkemuka:</strong> Dari penemu vaksin hingga ahli astronomi terkemuka, alumni UNAM telah membuat terobosan ilmiah yang signifikan di seluruh dunia.</li>
+                    <li><strong>Seniman, Penulis, dan Budayawan:</strong> UNAM telah melahirkan generasi seniman, penulis, dan intelektual yang karyanya telah memperkaya budaya Meksiko dan dikenal secara internasional, termasuk penulis seperti Carlos Fuentes dan Elena Poniatowska, serta banyak sutradara film, aktor, dan musisi.</li>
+                    <li><strong>Pengusaha dan Pemimpin Bisnis:</strong> Banyak alumni juga telah sukses di dunia bisnis, mendirikan perusahaan inovatif dan memimpin industri di Meksiko dan luar negeri.</li>
+                </ul>
+                <p>Keberhasilan alumni-alumni ini bukan hanya kebanggaan bagi UNAM tetapi juga inspirasi bagi generasi mahasiswa berikutnya. Mereka adalah duta hidup dari misi universitas, menunjukkan bagaimana pendidikan yang berkualitas dapat memberdayakan individu untuk mencapai hal-hal luar biasa dan memberikan dampak positif pada dunia.</p>
+
+                <p>Pada akhirnya, UNAM adalah lebih dari sekadar lembaga pendidikan; ia adalah jantung intelektual dan budaya Meksiko, sebuah kekuatan yang membentuk karakter bangsa, memajukan ilmu pengetahuan, dan memperkaya kehidupan masyarakat. Melalui pengajaran, penelitian, dan penyebaran budaya, UNAM terus menegaskan perannya sebagai pilar fundamental bagi kemajuan sosial dan intelektual, baik di tingkat lokal maupun global. Pengaruhnya bersifat kumulatif, tumbuh dan meluas seiring dengan waktu, meninggalkan warisan yang tak terhapuskan pada generasi demi generasi.</p>
+            </section>
+
+            <section>
+                <h2>Tantangan dan Masa Depan: Navigasi di Lanskap Global</h2>
+                <p>Meskipun UNAM telah mencapai banyak hal dan terus menjadi institusi terkemuka, ia tidak terlepas dari tantangan. Seperti halnya setiap universitas besar di dunia, UNAM harus terus beradaptasi dengan perubahan yang cepat dalam lanskap pendidikan global, tuntutan pasar kerja, kemajuan teknologi, dan dinamika sosial. Menghadapi tantangan-tantangan ini dengan strategi yang proaktif akan menentukan masa depannya sebagai pusat pengetahuan dan inovasi.</p>
+
+                <h3>Tantangan Internal dan Eksternal</h3>
+                <p>Beberapa tantangan utama yang dihadapi UNAM meliputi:</p>
+                <ul>
+                    <li><strong>Pendanaan:</strong> Sebagai universitas publik yang besar, UNAM sangat bergantung pada dana pemerintah. Fluktuasi anggaran nasional dapat mempengaruhi kapasitas universitas untuk berinvestasi dalam infrastruktur baru, penelitian, dan program beasiswa. Menemukan sumber pendanaan alternatif dan mengelola sumber daya secara efisien adalah prioritas.</li>
+                    <li><strong>Peningkatan Kualitas dan Relevansi:</strong> Meskipun UNAM sudah memiliki reputasi yang sangat baik, mempertahankan dan meningkatkan kualitas akademik di tengah persaingan global yang meningkat adalah tugas yang berkelanjutan. Ini melibatkan pembaruan kurikulum, adopsi metodologi pengajaran inovatif, dan investasi dalam pengembangan profesional dosen.</li>
+                    <li><strong>Aksesibilitas dan Inklusivitas:</strong> Meskipun UNAM berkomitmen untuk menyediakan akses pendidikan bagi semua, jumlah pelamar yang sangat besar setiap tahun berarti masih banyak yang tidak dapat diterima. Menemukan cara untuk memperluas kapasitas tanpa mengorbankan kualitas, serta memastikan inklusivitas bagi kelompok-kelompok yang kurang terwakili, tetap menjadi tantangan.</li>
+                    <li><strong>Ketidakpastian Sosial dan Politik:</strong> Lingkungan sosial dan politik di Meksiko yang kadang bergejolak dapat mempengaruhi stabilitas operasional universitas. UNAM harus terus menavigasi dinamika ini dengan mempertahankan otonomi dan misinya sebagai forum bebas untuk pemikiran kritis.</li>
+                    <li><strong>Infrastruktur dan Teknologi:</strong> Mempertahankan dan meningkatkan infrastruktur fisik serta teknologi agar tetap mutakhir dan relevan dengan kebutuhan pembelajaran dan penelitian abad ke-21 adalah investasi yang sangat besar dan berkelanjutan.</li>
+                </ul>
+                <p>Tantangan ini memerlukan pendekatan yang komprehensif, melibatkan seluruh komunitas universitas—mahasiswa, dosen, staf, alumni, dan pimpinan—untuk menemukan solusi yang berkelanjutan dan inovatif.</p>
+
+                <h3>Visi Masa Depan dan Strategi</h3>
+                <p>Masa depan UNAM akan dibentuk oleh bagaimana ia merespons tantangan-tantangan ini dan merangkul peluang baru. Beberapa area fokus untuk masa depan kemungkinan besar meliputi:</p>
+                <ul>
+                    <li><strong>Inovasi Digital dan Pembelajaran Hibrida:</strong> Pandemi COVID-19 mempercepat adopsi teknologi digital dalam pendidikan. UNAM kemungkinan akan terus mengembangkan platform pembelajaran daring yang kuat dan model pembelajaran hibrida yang menggabungkan kekuatan pengajaran tatap muka dengan fleksibilitas daring, memperluas jangkauan pendidikannya.</li>
+                    <li><strong>Penelitian Berdampak Global:</strong> UNAM akan terus memperkuat fokusnya pada penelitian yang memiliki dampak global, terutama di bidang-bidang kritis seperti kesehatan, energi terbarukan, ilmu lingkungan, dan teknologi informasi. Investasi dalam penelitian interdisipliner dan kolaborasi internasional akan menjadi kunci.</li>
+                    <li><strong>Internasionalisasi yang Lebih Dalam:</strong> Memperluas program pertukaran, menarik lebih banyak mahasiswa dan dosen internasional, serta berpartisipasi lebih aktif dalam jaringan penelitian global akan meningkatkan visibilitas dan pengaruh UNAM di kancah dunia.</li>
+                    <li><strong>Pengembangan Kewirausahaan dan Transfer Teknologi:</strong> UNAM akan terus mendorong budaya kewirausahaan di kalangan mahasiswa dan penelitinya, memfasilitasi transfer hasil penelitian ke sektor industri, dan menciptakan lebih banyak peluang bagi inovasi untuk diaplikasikan di dunia nyata.</li>
+                    <li><strong>Komitmen Sosial yang Berkelanjutan:</strong> Memperkuat peran UNAM sebagai agen perubahan sosial dan suara hati nurani bagi Meksiko akan tetap menjadi prioritas. Ini termasuk program-program untuk meningkatkan akses pendidikan, memerangi ketidakadilan, dan mempromosikan pembangunan berkelanjutan.</li>
+                    <li><strong>Alumni Engagement:</strong> Mengembangkan hubungan yang lebih kuat dengan jaringan alumni yang luas dan berpengaruh untuk mendukung universitas melalui pendanaan, mentorship, dan peluang karir bagi mahasiswa saat ini.</li>
+                </ul>
+                <p>Dengan rekam jejak yang solid dalam menghadapi tantangan dan beradaptasi dengan perubahan, UNAM berada pada posisi yang baik untuk terus berkembang. Kekuatan otonominya, komitmen terhadap keunggulan, dan semangat komunitasnya akan menjadi aset terbesar dalam menavigasi masa depan yang kompleks.</p>
+                <p>UNAM tidak hanya bertujuan untuk menjadi yang terbaik, tetapi juga yang paling relevan bagi masyarakat yang dilayaninya. Ini berarti terus mendengarkan kebutuhan masyarakat, merespons perubahan sosial, dan mempersiapkan lulusannya tidak hanya untuk pekerjaan saat ini tetapi juga untuk pekerjaan yang belum ada. Ini adalah visi yang menuntut fleksibilitas, kreativitas, dan keberanian untuk terus berinovasi.</p>
+                <p>Pada akhirnya, masa depan UNAM akan tetap cerah selama ia terus berpegang teguh pada prinsip-prinsip dasarnya: kebebasan berpikir, pencarian kebenaran, dan pelayanan kepada masyarakat. Ini adalah pondasi yang telah membuatnya kuat selama berabad-abad dan yang akan terus membimbingnya dalam menghadapi abad-abad yang akan datang.</p>
+            </section>
+
+            <svg class="article-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" alt="Ilustrasi tangan yang memegang bola dunia dengan simbol WiFi, panah naik, dan elemen gigi roda, melambangkan inovasi, konektivitas global, dan kemajuan masa depan UNAM.">
+                <rect x="0" y="0" width="100" height="100" fill="white"/>
+                <!-- Hand -->
+                <path d="M20 70 Q30 90 50 90 Q70 90 80 70 L75 60 L60 65 L55 55 L40 60 L35 50 L20 60 Z" fill="#c0c0c0"/>
+                <!-- Globe -->
+                <circle cx="50" cy="40" r="25" fill="#a8dadc" stroke="#457b9d" stroke-width="1"/>
+                <path d="M40 35 Q45 25 50 20 Q55 25 60 35 M40 45 Q45 55 50 60 Q55 55 60 45" stroke="#457b9d" stroke-width="1"/>
+                <!-- Wifi symbol -->
+                <path d="M40 30 Q50 20 60 30 M43 35 Q50 27 57 35 M46 40 Q50 33 54 40" stroke="#f1faee" stroke-width="2" fill="none"/>
+                <!-- Upward arrow (progress) -->
+                <path d="M70 55 L75 50 L80 55 L75 60 Z" fill="#28a745"/>
+                <!-- Gears (innovation) -->
+                <circle cx="25" cy="25" r="7" fill="#ffc107"/>
+                <path d="M25 18 L27 20 L27 30 L23 30 L23 20 Z M18 25 L20 23 L30 23 L30 27 L20 27 Z" fill="#ffc107"/>
+            </svg>
+            <p class="image-caption">Ilustrasi tangan memegang bola dunia yang dihiasi simbol-simbol kemajuan, inovasi, dan konektivitas global, menggambarkan visi masa depan UNAM.</p>
+
+            <section>
+                <h2>Kesimpulan: Warisan yang Terus Berkembang</h2>
+                <p>Universidad Nacional Autónoma de México (UNAM) adalah sebuah institusi yang tak tertandingi dalam sejarah dan signifikansinya bagi Meksiko dan dunia. Dari akarnya sebagai universitas kolonial yang didirikan berabad-abad yang lalu, hingga transformasinya menjadi pusat otonom untuk kebebasan berpikir dan keunggulan akademik, UNAM telah menunjukkan ketahanan, adaptasi, dan komitmen yang luar biasa terhadap misinya. Ia adalah cerminan hidup dari evolusi intelektual, budaya, dan sosial sebuah bangsa yang bangga.</p>
+
+                <p>Melalui tiga pilar utamanya—pengajaran, penelitian, dan penyebaran budaya—UNAM telah berhasil menciptakan lingkungan yang subur bagi pertumbuhan intelektual dan personal. Ribuan program studi yang beragam menarik mahasiswa dari berbagai latar belakang, sementara puluhan pusat penelitiannya terus mendorong batas-batas pengetahuan manusia. Di luar ruang kelas dan laboratorium, UNAM juga berfungsi sebagai penjaga dan promotor warisan budaya Meksiko yang kaya, menyediakan akses kepada seni, musik, dan sastra bagi masyarakat luas.</p>
+
+                <p>Keunggulan arsitektur kampusnya, terutama Ciudad Universitaria yang diakui UNESCO, tidak hanya indah dipandang mata tetapi juga berfungsi sebagai simbol fisik dari ambisi dan pencapaian UNAM. Mural-mural monumental yang menghiasi dinding-dindingnya menceritakan kisah yang dalam tentang identitas Meksiko, sebuah narasi yang terus berlanjut hingga hari ini. Kehidupan mahasiswa yang dinamis, dengan berbagai organisasi, kegiatan olahraga, dan acara budaya, menciptakan komunitas yang erat dan pengalaman yang tak terlupakan bagi setiap individu yang menjadi bagian darinya.</p>
+
+                <p>Dampak sosial dan budaya UNAM terasa di setiap aspek kehidupan Meksiko. Dari menghasilkan pemenang Hadiah Nobel dan presiden negara hingga ilmuwan terkemuka dan seniman legendaris, alumninya telah membentuk dan terus membentuk masa depan. UNAM tidak hanya mendidik individu; ia juga menumbuhkan warga negara yang bertanggung jawab, pemimpin yang visioner, dan inovator yang berani menghadapi tantangan dunia.</p>
+
+                <p>Meskipun menghadapi berbagai tantangan di masa depan, mulai dari pendanaan hingga adaptasi teknologi dan persaingan global, UNAM memiliki fondasi yang kuat untuk terus berkembang. Dengan komitmennya terhadap inovasi digital, penelitian berdampak global, internasionalisasi yang lebih dalam, dan kewirausahaan, UNAM siap untuk mengukir babak baru dalam sejarah panjangnya. Otonomi intelektualnya akan terus menjadi kunci kemampuannya untuk beradaptasi, berinovasi, dan tetap relevan di tengah perubahan dunia yang cepat.</p>
+
+                <p>Singkatnya, UNAM adalah lebih dari sekadar universitas; ia adalah sebuah institusi yang hidup dan bernapas, sebuah warisan yang terus berkembang. Ia adalah jantung intelektual yang memompa ide-ide baru, pusat budaya yang memelihara semangat bangsa, dan mercusuar pengetahuan yang menerangi jalan menuju masa depan yang lebih baik. Keberadaannya adalah bukti nyata dari kekuatan pendidikan dalam membentuk individu, masyarakat, dan peradaban. Sebagai sebuah institusi yang terus mencari kebenaran, mempromosikan kebebasan, dan melayani masyarakat, UNAM akan terus menjadi salah satu harta paling berharga bagi Meksiko dan salah satu pusat pengetahuan paling penting di dunia.</p>
+                <p>Kisah UNAM adalah kisah tentang dedikasi yang tak henti-hentinya terhadap pembelajaran, penelitian, dan budaya. Ini adalah kisah tentang bagaimana sebuah institusi dapat bertahan dan berkembang selama berabad-abad, menjadi simbol kebanggaan dan harapan. Dengan setiap generasi mahasiswa yang baru, dengan setiap penemuan ilmiah, dan dengan setiap karya seni yang diciptakan, UNAM terus menulis babak baru dalam warisan abadi ini, menegaskan posisinya sebagai Jantung Intelektual Meksiko dan Pusat Pengetahuan Dunia.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; Artikel ini dibuat untuk tujuan edukasi dan informasi.</p>
+        </footer>
+    </div>
+<div class='related-posts'><h3>Related Posts</h3><ul><li><a href="/yukata">Yukata</a></li>
+<li><a href="/zai">Zai</a></li>
+<li><a href="/zohor">Zohor</a></li>
+<li><a href="/wali-allah">Wali Allah</a></li>
+<li><a href="/uktab">Uktab</a></li>
+<li><a href="/tout-le-monde">Tout Le Monde</a></li>
+<li><a href="/trombus">Trombus</a></li>
+<li><a href="/kitab-majapahit">Kitab Majapahit</a></li>
+<li><a href="/wadam">Wadam</a></li>
+<li><a href="/ve">Ve</a></li></ul></div>
+<script src="/ik.js"></script>
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transkonduktans: Konsep Fundamental Elektronika Modern</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="description" content="Eksplorasi mendalam tentang transkonduktans, konsep kunci dalam analisis dan desain sirkuit elektronik modern.">
+    <style>
+        /* Desain dasar dan warna sejuk cerah */
+        :root {
+            --primary-blue: #3498db; /* Biru cerah */
+            --secondary-blue: #aaddff; /* Biru muda */
+            --light-blue: #e0f2f7; /* Biru sangat muda untuk background */
+            --text-dark: #2c3e50; /* Teks gelap, biru keabuan */
+            --text-medium: #555; /* Teks sedang */
+            --background-light: #f0f8ff; /* AliceBlue, sangat sejuk */
+            --border-light: #cceeff; /* Border biru muda */
+            --highlight-bg: #e8f4f8; /* Highlight background */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        /* Tipografi */
+        h1, h2, h3, h4 {
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: var(--text-dark);
+            border-bottom: 3px solid var(--secondary-blue);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 10px;
+            margin-top: 2em;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--primary-blue);
+            margin-top: 1.5em;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-medium);
+            margin-top: 1.2em;
+        }
+
+        p {
+            margin-bottom: 1em;
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--primary-blue);
+        }
+
+        /* Daftar */
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Kode dan Persamaan */
+        pre {
+            background-color: var(--highlight-bg);
+            padding: 15px;
+            border-left: 5px solid var(--primary-blue);
+            overflow-x: auto;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            color: var(--text-dark);
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: var(--highlight-bg);
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: var(--primary-blue);
+        }
+
+        .equation {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 1.1em;
+            background-color: var(--highlight-bg);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Gambar SVG */
+        img, svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            border: 1px solid var(--border-light);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--background-light);
+        }
+
+        /* Blockquote */
+        blockquote {
+            border-left: 4px solid var(--secondary-blue);
+            padding-left: 20px;
+            margin: 20px 0;
+            color: var(--text-medium);
+            font-style: italic;
+            background-color: var(--highlight-bg);
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 0 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            pre, .equation {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+            table th, table td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+            ul, ol {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Transkonduktans: Konsep Fundamental Elektronika Modern</h1>
+        </header>
+
+        <main>
+            <p>Dalam dunia elektronika, terdapat berbagai parameter yang esensial untuk memahami, menganalisis, dan mendesain sirkuit. Salah satu parameter yang sangat fundamental dan memiliki peran krusial, terutama dalam desain penguat dan perangkat aktif, adalah <strong>transkonduktans</strong>. Konsep ini menjembatani hubungan antara perubahan tegangan pada satu titik sirkuit dengan perubahan arus pada titik lainnya, menjadikannya metrik utama untuk mengukur efisiensi konversi tegangan ke arus dalam sebuah perangkat.</p>
+
+            <p>Transkonduktans adalah inti dari bagaimana transistor (seperti BJT, MOSFET, JFET) dan tabung vakum mampu menguatkan sinyal. Tanpa pemahaman yang kuat tentang transkonduktans, analisis gain, impedansi, dan respons frekuensi dari sebuah penguat akan menjadi sangat sulit. Artikel ini akan mengupas tuntas transkonduktans, mulai dari definisi dasar, unit pengukuran, penerapannya pada berbagai perangkat, faktor-faktor yang memengaruhinya, perannya dalam desain sirkuit, hingga aplikasi modernnya.</p>
+
+            <section id="definisi-dasar">
+                <h2>1. Definisi Dasar Transkonduktans</h2>
+                <p>Secara harfiah, "transkonduktans" dapat dipecah menjadi "trans" (lintas) dan "konduktans" (kemampuan menghantarkan arus). Jadi, transkonduktans merujuk pada konduktans 'lintas' atau 'antar' terminal. Lebih spesifik lagi, transkonduktans mengukur seberapa besar perubahan arus keluaran sebagai respons terhadap perubahan kecil tegangan masukan, dengan asumsi semua parameter lain dijaga konstan.</p>
+                <p>Dalam analisis sinyal kecil (<em>small-signal analysis</em>), transkonduktans didefinisikan secara matematis sebagai:</p>
+                <div class="equation">
+                    g<sub>m</sub> = &Delta;I<sub>keluar</sub> / &Delta;V<sub>masuk</sub>
+                </div>
+                <p>Atau, lebih tepatnya dalam bentuk turunan diferensial:</p>
+                <div class="equation">
+                    g<sub>m</sub> = dI<sub>keluar</sub> / dV<sub>masuk</sub> |<sub>V<sub>lain</sub> konstan</sub>
+                </div>
+                <p>Di mana:</p>
+                <ul>
+                    <li><code>g<sub>m</sub></code> adalah simbol untuk transkonduktans.</li>
+                    <li><code>I<sub>keluar</sub></code> adalah arus keluaran perangkat (misalnya, arus kolektor untuk BJT atau arus drain untuk MOSFET).</li>
+                    <li><code>V<sub>masuk</sub></code> adalah tegangan masukan perangkat (misalnya, tegangan basis-emitor untuk BJT atau tegangan gerbang-sumber untuk MOSFET).</li>
+                    <li><code>V<sub>lain</sub></code> adalah tegangan atau parameter lain yang harus dijaga konstan selama pengukuran.</li>
+                </ul>
+                <p>Unit standar internasional (SI) untuk transkonduktans adalah <strong>Siemens (S)</strong>, yang merupakan kebalikan dari Ohm (Ω). Sebelumnya, unit ini juga dikenal sebagai <strong>Mho (℧)</strong>. Satu Siemens setara dengan satu Ampere per Volt (A/V).</p>
+
+                <svg width="300" height="150" viewBox="0 0 300 150" alt="Diagram Konseptual Transkonduktans">
+                    <title>Konsep Dasar Transkonduktans</title>
+                    <rect x="100" y="30" width="100" height="90" rx="10" ry="10" fill="#e0f2f7" stroke="#3498db" stroke-width="2"/>
+                    <text x="150" y="75" font-family="Segoe UI" font-size="18" fill="#2c3e50" text-anchor="middle">Perangkat</text>
+                    <text x="150" y="95" font-family="Segoe UI" font-size="16" fill="#2c3e50" text-anchor="middle">(Transistor)</text>
+
+                    <!-- Input Voltage -->
+                    <line x1="20" y1="60" x2="100" y2="60" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="90,55 100,60 90,65" fill="#2c3e50"/>
+                    <text x="60" y="50" font-family="Segoe UI" font-size="16" fill="#2c3e50" text-anchor="middle">V_masuk</text>
+
+                    <!-- Output Current -->
+                    <line x1="200" y1="80" x2="280" y2="80" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="270,75 280,80 270,85" fill="#2c3e50"/>
+                    <text x="240" y="70" font-family="Segoe UI" font-size="16" fill="#2c3e50" text-anchor="middle">I_keluar</text>
+                    <text x="150" y="140" font-family="Segoe UI" font-size="14" fill="#555" text-anchor="middle">Perubahan V_masuk menghasilkan perubahan I_keluar (g_m)</text>
+                </svg>
+
+                <h3>1.1. Pentingnya Transkonduktans</h3>
+                <p>Transkonduktans adalah parameter vital karena secara langsung berkaitan dengan kemampuan sebuah perangkat untuk menguatkan sinyal. Dalam sebuah penguat, tujuan utamanya adalah mengambil sinyal masukan yang lemah (biasanya tegangan) dan menghasilkan sinyal keluaran yang lebih kuat (baik tegangan maupun arus). Transkonduktans secara fundamental menjelaskan bagaimana perangkat aktif mengubah sinyal tegangan masukan menjadi sinyal arus keluaran yang proporsional.</p>
+                <ul>
+                    <li><strong>Penguat Tegangan:</strong> Ketika arus keluaran melewati sebuah resistor beban, ia menghasilkan tegangan keluaran. Semakin besar transkonduktans, semakin besar arus keluaran yang dihasilkan untuk perubahan tegangan masukan yang sama, yang berarti gain tegangan yang lebih tinggi.</li>
+                    <li><strong>Penguat Arus:</strong> Dalam beberapa konfigurasi, transkonduktans dapat secara tidak langsung berkontribusi pada penguatan arus.</li>
+                    <li><strong>Analisis Sinyal Kecil:</strong> Transkonduktans adalah salah satu blok bangunan utama dalam model sinyal kecil perangkat aktif, memungkinkan analisis performa sirkuit yang akurat.</li>
+                </ul>
+            </section>
+
+            <section id="transkonduktans-pada-perangkat">
+                <h2>2. Transkonduktans pada Berbagai Perangkat Aktif</h2>
+                <p>Transkonduktans bukan hanya konsep teoritis, melainkan parameter yang memiliki nilai konkret dan rumus spesifik untuk setiap jenis perangkat aktif.</p>
+
+                <h3>2.1. Transistor Bipolar Sambungan (BJT)</h3>
+                <p>Pada BJT, transkonduktans <code>g<sub>m</sub></code> mendefinisikan hubungan antara perubahan kecil pada tegangan basis-emitor (V<sub>BE</sub>) dan perubahan yang dihasilkan pada arus kolektor (I<sub>C</sub>) pada mode aktif maju.</p>
+                <p>Rumus transkonduktans untuk BJT adalah:</p>
+                <div class="equation">
+                    g<sub>m</sub> = I<sub>C</sub> / V<sub>T</sub>
+                </div>
+                <p>Di mana:</p>
+                <ul>
+                    <li><code>I<sub>C</sub></code> adalah arus kolektor DC (arus bias) pada titik operasi (quiescent point).</li>
+                    <li><code>V<sub>T</sub></code> adalah tegangan termal, yang diberikan oleh <code>kT/q</code>. Pada suhu kamar (sekitar 300 K), <code>V<sub>T</sub></code> kira-kira 25-26 mV.</li>
+                    <li><code>k</code> adalah konstanta Boltzmann (1.38 x 10<sup>-23</sup> J/K).</li>
+                    <li><code>T</code> adalah suhu absolut dalam Kelvin.</li>
+                    <li><code>q</code> adalah muatan elektron (1.602 x 10<sup>-19</sup> C).</li>
+                </ul>
+                <p>Dari rumus ini, terlihat jelas bahwa transkonduktans BJT berbanding lurus dengan arus kolektor bias. Ini berarti bahwa dengan meningkatkan arus bias DC melalui transistor, kita juga meningkatkan transkonduktansnya, dan dengan demikian potensi gain penguat. Namun, peningkatan arus bias juga berarti peningkatan konsumsi daya dan mungkin distorsi pada titik tertentu.</p>
+
+                <svg width="250" height="200" viewBox="0 0 250 200" alt="Simbol Transistor BJT NPN dengan VBE dan IC">
+                    <title>Transkonduktans pada BJT</title>
+                    <!-- BJT NPN Symbol -->
+                    <line x1="125" y1="20" x2="125" y2="80" stroke="#2c3e50" stroke-width="2"/> <!-- Kolektor -->
+                    <line x1="125" y1="80" x2="180" y2="80" stroke="#2c3e50" stroke-width="2"/> <!-- Basis -->
+                    <line x1="125" y1="80" x2="70" y2="140" stroke="#2c3e50" stroke-width="2"/> <!-- Emitor -->
+                    <polygon points="70,140 80,130 70,135 60,130" fill="#2c3e50" stroke="#2c3e50" stroke-width="2"/> <!-- Panah emitor -->
+
+                    <!-- Circles and text for connections -->
+                    <circle cx="125" cy="20" r="4" fill="#3498db" stroke="#3498db"/>
+                    <text x="125" y="10" font-family="Segoe UI" font-size="14" fill="#2c3e50" text-anchor="middle">C</text>
+                    <circle cx="180" cy="80" r="4" fill="#3498db" stroke="#3498db"/>
+                    <text x="190" y="85" font-family="Segoe UI" font-size="14" fill="#2c3e50">B</text>
+                    <circle cx="70" cy="140" r="4" fill="#3498db" stroke="#3498db"/>
+                    <text x="60" y="150" font-family="Segoe UI" font-size="14" fill="#2c3e50">E</text>
+
+                    <!-- Labels for V_BE and I_C -->
+                    <text x="150" y="100" font-family="Segoe UI" font-size="14" fill="#3498db" text-anchor="start">V<sub>BE</sub></text>
+                    <text x="100" y="40" font-family="Segoe UI" font-size="14" fill="#3498db" text-anchor="end">I<sub>C</sub></text>
+
+                    <!-- Arrow for I_C -->
+                    <line x1="125" y1="40" x2="125" y2="25" stroke="#3498db" stroke-width="2"/>
+                    <polygon points="120,30 125,20 130,30" fill="#3498db"/>
+                </svg>
+
+                <h3>2.2. Transistor Efek Medan Semikonduktor Oksida Logam (MOSFET)</h3>
+                <p>MOSFET adalah tulang punggung elektronika digital dan analog modern. Transkonduktans <code>g<sub>m</sub></code> pada MOSFET menjelaskan hubungan antara perubahan kecil pada tegangan gerbang-sumber (V<sub>GS</sub>) dan perubahan yang dihasilkan pada arus drain (I<sub>D</sub>) ketika perangkat beroperasi di wilayah saturasi.</p>
+                <p>Ada beberapa bentuk rumus transkonduktans untuk MOSFET, tergantung pada parameter yang diketahui:</p>
+                <ol>
+                    <li>Berdasarkan Arus Drain (I<sub>D</sub>):
+                        <div class="equation">
+                            g<sub>m</sub> = 2 &times; I<sub>D</sub> / (V<sub>GS</sub> - V<sub>th</sub>)
+                        </div>
+                    </li>
+                    <li>Berdasarkan Konstanta Perangkat (k' dan W/L):
+                        <div class="equation">
+                            g<sub>m</sub> = k' &times; (W/L) &times; (V<sub>GS</sub> - V<sub>th</sub>)
+                        </div>
+                        Atau dengan <code>K = k' * (W/L) / 2</code>:
+                        <div class="equation">
+                            g<sub>m</sub> = 2K &times; (V<sub>GS</sub> - V<sub>th</sub>)
+                        </div>
+                    </li>
+                    <li>Berdasarkan Arus Drain dan Konstanta Perangkat:
+                        <div class="equation">
+                            g<sub>m</sub> = &radic;(2k' &times; W/L &times; I<sub>D</sub>) = &radic;(4K &times; I<sub>D</sub>)
+                        </div>
+                    </li>
+                </ol>
+                <p>Di mana:</p>
+                <ul>
+                    <li><code>I<sub>D</sub></code> adalah arus drain DC (arus bias).</li>
+                    <li><code>V<sub>GS</sub></code> adalah tegangan gerbang-sumber DC.</li>
+                    <li><code>V<sub>th</sub></code> adalah tegangan ambang (threshold voltage) perangkat.</li>
+                    <li><code>k'</code> adalah parameter transkonduktans proses (μ<sub>n</sub>C<sub>ox</sub> untuk NMOS, μ<sub>p</sub>C<sub>ox</sub> untuk PMOS), di mana μ adalah mobilitas pembawa muatan dan C<sub>ox</sub> adalah kapasitansi oksida per satuan luas.</li>
+                    <li><code>W</code> adalah lebar gerbang (gate width).</li>
+                    <li><code>L</code> adalah panjang gerbang (gate length).</li>
+                    <li><code>W/L</code> adalah rasio aspek perangkat, yang merupakan faktor desain penting.</li>
+                </ul>
+                <p>Tidak seperti BJT, transkonduktans MOSFET tidak hanya tergantung pada arus bias, tetapi juga pada tegangan gerbang-sumber (V<sub>GS</sub>) relatif terhadap tegangan ambang (V<sub>th</sub>), dan dimensi fisik perangkat (W/L). Ini memberikan desainer lebih banyak fleksibilitas untuk mengoptimalkan <code>g<sub>m</sub></code> melalui dimensi transistor.</p>
+
+                <svg width="250" height="200" viewBox="0 0 250 200" alt="Simbol Transistor NMOS dengan VGS dan ID">
+                    <title>Transkonduktans pada MOSFET</title>
+                    <!-- NMOS Symbol -->
+                    <line x1="125" y1="20" x2="125" y2="80" stroke="#2c3e50" stroke-width="2"/> <!-- Drain -->
+                    <line x1="125" y1="120" x2="125" y2="180" stroke="#2c3e50" stroke-width="2"/> <!-- Source -->
+                    <line x1="125" y1="80" x2="125" y2="120" stroke="#2c3e50" stroke-width="2"/> <!-- Saluran -->
+                    <line x1="70" y1="100" x2="115" y2="100" stroke="#2c3e50" stroke-width="2"/> <!-- Gate -->
+                    <line x1="125" y1="120" x2="115" y2="120" stroke="#2c3e50" stroke-width="2"/> <!-- Source connection for VGS -->
+
+                    <!-- Circles and text for connections -->
+                    <circle cx="125" cy="20" r="4" fill="#3498db" stroke="#3498db"/>
+                    <text x="125" y="10" font-family="Segoe UI" font-size="14" fill="#2c3e50" text-anchor="middle">D</text>
+                    <circle cx="70" cy="100" r="4" fill="#3498db" stroke="#3498db"/>
+                    <text x="60" y="105" font-family="Segoe UI" font-size="14" fill="#2c3e50">G</text>
+                    <circle cx="125" cy="180" r="4" fill="#3498db" stroke="#3498db"/>
+                    <text x="125" y="190" font-family="Segoe UI" font-size="14" fill="#2c3e50" text-anchor="middle">S</text>
+
+                    <!-- Labels for V_GS and I_D -->
+                    <text x="90" y="115" font-family="Segoe UI" font-size="14" fill="#3498db" text-anchor="end">V<sub>GS</sub></text>
+                    <text x="100" y="40" font-family="Segoe UI" font-size="14" fill="#3498db" text-anchor="end">I<sub>D</sub></text>
+
+                    <!-- Arrow for I_D -->
+                    <line x1="125" y1="40" x2="125" y2="25" stroke="#3498db" stroke-width="2"/>
+                    <polygon points="120,30 125,20 130,30" fill="#3498db"/>
+                </svg>
+
+                <h3>2.3. Transistor Efek Medan Sambungan (JFET)</h3>
+                <p>JFET memiliki transkonduktans yang mirip dengan MOSFET, tetapi operasinya dikendalikan oleh tegangan gerbang-sumber mundur (reverse-biased). JFET biasanya beroperasi dalam mode deplesi. Rumus transkonduktans untuk JFET adalah:</p>
+                <div class="equation">
+                    g<sub>m</sub> = g<sub>m0</sub> &times; [1 - V<sub>GS</sub>/V<sub>P</sub>]
+                </div>
+                <p>Di mana:</p>
+                <ul>
+                    <li><code>g<sub>m0</sub></code> adalah transkonduktans maksimum ketika V<sub>GS</sub> = 0.</li>
+                    <li><code>V<sub>P</sub></code> adalah tegangan pinch-off.</li>
+                </ul>
+                <p>JFET memiliki transkonduktans yang bervariasi secara non-linear dengan V<sub>GS</sub>, mirip dengan MOSFET, tetapi dengan karakteristik yang berbeda karena prinsip fisik yang mendasarinya.</p>
+
+                <h3>2.4. Tabung Vakum (Triode)</h3>
+                <p>Meskipun sebagian besar digantikan oleh transistor, tabung vakum adalah nenek moyang perangkat penguat dan juga memiliki transkonduktans. Untuk triode, transkonduktans didefinisikan sebagai perubahan arus anoda (plate current, I<sub>P</sub>) terhadap perubahan tegangan grid (grid voltage, V<sub>G</sub>).</p>
+                <div class="equation">
+                    g<sub>m</sub> = dI<sub>P</sub> / dV<sub>G</sub> |<sub>V<sub>A</sub> konstan</sub>
+                </div>
+                <p>Prinsip dasarnya sama: kontrol tegangan pada satu terminal (grid) memengaruhi aliran arus pada terminal lain (anoda).</p>
+            </section>
+
+            <section id="faktor-memengaruhi">
+                <h2>3. Faktor-faktor yang Memengaruhi Transkonduktans</h2>
+                <p>Transkonduktans bukanlah nilai yang statis; ia dapat bervariasi secara signifikan tergantung pada beberapa faktor, baik internal maupun eksternal perangkat.</p>
+
+                <h3>3.1. Titik Bias (Quiescent Point)</h3>
+                <p>Ini adalah faktor paling dominan. Seperti yang terlihat dari rumus BJT (<code>g<sub>m</sub> = I<sub>C</sub> / V<sub>T</sub></code>) dan MOSFET (tergantung pada I<sub>D</sub> atau V<sub>GS</sub>-V<sub>th</sub>), transkonduktans sangat bergantung pada arus dan tegangan DC yang diterapkan pada perangkat. Memilih titik bias yang tepat sangat penting dalam desain penguat untuk mencapai transkonduktans yang diinginkan, gain yang optimal, dan linearitas yang baik.</p>
+
+                <h3>3.2. Suhu</h3>
+                <p>Suhu memengaruhi parameter perangkat semikonduktor. Pada BJT, tegangan termal V<sub>T</sub> berbanding lurus dengan suhu absolut (T), sehingga secara langsung memengaruhi g<sub>m</sub>. Pada MOSFET, mobilitas pembawa muatan (μ) dan tegangan ambang (V<sub>th</sub>) juga bergantung pada suhu, yang pada gilirannya memengaruhi k' dan akhirnya g<sub>m</sub>. Umumnya, g<sub>m</sub> akan sedikit menurun dengan peningkatan suhu karena penurunan mobilitas.</p>
+
+                <h3>3.3. Geometri Perangkat (untuk MOSFET)</h3>
+                <p>Untuk MOSFET, rasio lebar-ke-panjang gerbang (W/L) adalah faktor desain kritis. Peningkatan W/L umumnya akan meningkatkan transkonduktans. Ini karena gerbang yang lebih lebar memungkinkan lebih banyak saluran untuk mengalirkan arus, sementara gerbang yang lebih pendek mengurangi resistansi saluran. Desainer sirkuit sering memanipulasi W/L untuk mendapatkan transkonduktans yang spesifik.</p>
+
+                <h3>3.4. Parameter Proses (Fabrikasi)</h3>
+                <p>Parameter seperti mobilitas pembawa muatan (μ) dan kapasitansi oksida per satuan luas (C<sub>ox</sub>) ditentukan oleh teknologi fabrikasi semikonduktor. Proses yang berbeda akan menghasilkan perangkat dengan nilai k' yang berbeda, sehingga memengaruhi transkonduktans intrinsik perangkat.</p>
+
+                <h3>3.5. Efek Saluran Pendek (Short-Channel Effects)</h3>
+                <p>Pada MOSFET modern dengan panjang gerbang yang sangat pendek (di bawah 100 nm), model transkonduktans ideal mulai menyimpang. Efek-efek seperti saturasi kecepatan pembawa muatan dan modulasi panjang saluran (channel length modulation) menjadi lebih dominan, mengubah perilaku <code>g<sub>m</sub></code>. Dalam kasus ini, <code>g<sub>m</sub></code> mungkin tidak meningkat secepat yang diperkirakan oleh model klasik pada V<sub>GS</sub> yang tinggi.</p>
+
+                <h3>3.6. Efek Tubuh (Body Effect)</h3>
+                <p>Pada MOSFET, jika tegangan sumber tidak sama dengan tegangan bulk (substrat), tegangan ambang V<sub>th</sub> akan berubah, yang dikenal sebagai efek tubuh. Karena <code>g<sub>m</sub></code> bergantung pada V<sub>th</sub>, efek tubuh dapat memengaruhi transkonduktans perangkat, terutama dalam konfigurasi sirkuit tertentu seperti penguat cascode.</p>
+            </section>
+
+            <section id="peran-dalam-desain-sirkuit">
+                <h2>4. Peran Transkonduktans dalam Desain Sirkuit Penguat</h2>
+                <p>Transkonduktans adalah parameter kunci dalam analisis dan desain sirkuit penguat analog. Ini secara langsung memengaruhi gain tegangan, impedansi, dan respons frekuensi.</p>
+
+                <h3>4.1. Gain Tegangan (Voltage Gain)</h3>
+                <p>Untuk penguat tegangan yang paling sederhana, seperti penguat common-emitter (BJT) atau common-source (MOSFET) dengan resistor beban R<sub>L</sub>, gain tegangan sinyal kecil (A<sub>v</sub>) dapat diperkirakan sebagai:</p>
+                <div class="equation">
+                    A<sub>v</sub> &asymp; -g<sub>m</sub> &times; R<sub>L</sub>
+                </div>
+                <p>Tanda negatif menunjukkan pembalikan fasa (inversi) antara masukan dan keluaran. Dari persamaan ini, terlihat jelas bahwa semakin besar nilai <code>g<sub>m</sub></code>, semakin besar pula gain tegangan yang dapat dicapai oleh penguat. Ini adalah salah satu alasan mengapa desainer berusaha mengoptimalkan <code>g<sub>m</sub></code>.</p>
+
+                <h3>4.2. Impedansi Keluaran</h3>
+                <p>Transkonduktans juga berperan dalam menentukan impedansi keluaran penguat. Pada penguat common-source atau common-emitter, impedansi keluaran sebagian ditentukan oleh resistansi keluaran intrinsik perangkat (<code>r<sub>o</sub></code> atau <code>r<sub>ds</sub></code>) dan resistansi beban. Transkonduktans memengaruhi bagaimana arus keluaran dihasilkan, yang pada gilirannya memengaruhi bagaimana sirkuit berinteraksi dengan beban.</p>
+
+                <h3>4.3. Respons Frekuensi dan Produk Gain-Bandwidth</h3>
+                <p>Kapasitansi parasitik dalam perangkat aktif (misalnya C<sub>gs</sub>, C<sub>gd</sub> pada MOSFET; C<sub>pi</sub>, C<sub>mu</sub> pada BJT) berinteraksi dengan transkonduktans untuk menentukan respons frekuensi penguat. Produk gain-bandwidth (GBP) dari sebuah penguat seringkali berbanding lurus dengan <code>g<sub>m</sub></code> dan berbanding terbalik dengan kapasitansi total. Ini berarti bahwa transkonduktans yang lebih tinggi diperlukan untuk mencapai bandwidth yang lebih luas pada gain yang diberikan, atau gain yang lebih tinggi pada bandwidth yang diberikan.</p>
+                <div class="equation">
+                    GBP &asymp; g<sub>m</sub> / (2&pi; &times; C<sub>total</sub>)
+                </div>
+                <p>Di mana <code>C<sub>total</sub></code> adalah kapasitansi dominan yang membatasi respons frekuensi.</p>
+
+                <h3>4.4. Linearitas dan Distorsi</h3>
+                <p>Idealnya, transkonduktans perangkat harus konstan terhadap perubahan tegangan masukan sinyal. Namun, dalam kenyataannya, <code>g<sub>m</sub></code> seringkali memiliki dependensi non-linear pada tegangan masukan sinyal besar. Variasi <code>g<sub>m</sub></code> ini menyebabkan distorsi sinyal, menghasilkan harmonisa yang tidak diinginkan pada keluaran. Desainer sirkuit sering menggunakan teknik-teknik seperti umpan balik (feedback), degenerasi sumber/emitor, atau arsitektur diferensial untuk mem linearisasi transkonduktans dan mengurangi distorsi.</p>
+            </section>
+
+            <section id="operational-transconductance-amplifiers">
+                <h2>5. Operational Transconductance Amplifiers (OTAs)</h2>
+                <p>Konsep transkonduktans sangat sentral sehingga ada kelas penguat yang secara eksplisit dinamakan berdasarkan prinsip ini: <strong>Operational Transconductance Amplifiers (OTAs)</strong>. Berbeda dengan Operational Amplifiers (Op-Amp) konvensional yang memiliki keluaran tegangan, OTA memiliki keluaran arus yang proporsional dengan perbedaan tegangan masukan diferensialnya.</p>
+
+                <h3>5.1. Definisi dan Karakteristik</h3>
+                <p>OTA adalah penguat yang mengubah perbedaan tegangan masukan (V<sub>in+</sub> - V<sub>in-</sub>) menjadi arus keluaran (I<sub>out</sub>). Matematisnya:</p>
+                <div class="equation">
+                    I<sub>out</sub> = g<sub>m</sub> &times; (V<sub>in+</sub> - V<sub>in-</sub>)
+                </div>
+                <p>Karakteristik utama OTA:</p>
+                <ul>
+                    <li><strong>Keluaran Arus:</strong> Berbeda dengan Op-Amp standar yang memiliki keluaran tegangan dengan impedansi keluaran rendah, OTA memiliki keluaran arus dengan impedansi keluaran yang sangat tinggi (idealnya tak terhingga).</li>
+                    <li><strong>Transkonduktans yang Dapat Diprogram:</strong> Salah satu fitur paling menarik dari banyak OTA adalah transkonduktansnya (g<sub>m</sub>) dapat dikendalikan atau diprogram secara eksternal melalui arus bias DC yang disebut I<sub>ABC</sub> (Amplifier Bias Current). Ini berarti gain dari sirkuit yang menggunakan OTA dapat diubah secara dinamis.</li>
+                    <li><strong>Aplikasi Serbaguna:</strong> Kemampuan untuk mengontrol <code>g<sub>m</sub></code> secara eksternal menjadikan OTA sangat fleksibel untuk berbagai aplikasi, terutama dalam sistem yang memerlukan penyesuaian gain, frekuensi, atau parameter lainnya.</li>
+                </ul>
+
+                <svg width="250" height="200" viewBox="0 0 250 200" alt="Simbol Penguat Transkonduktans Operasional (OTA)">
+                    <title>Simbol OTA</title>
+                    <!-- OTA Triangle -->
+                    <polygon points="50,50 200,100 50,150" fill="#e0f2f7" stroke="#3498db" stroke-width="2"/>
+
+                    <!-- Input Terminals -->
+                    <line x1="10" y1="70" x2="50" y2="70" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="30" y="60" font-family="Segoe UI" font-size="14" fill="#2c3e50" text-anchor="middle">V<sub>in+</sub></text>
+                    <line x1="10" y1="130" x2="50" y2="130" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="30" y="145" font-family="Segoe UI" font-size="14" fill="#2c3e50" text-anchor="middle">V<sub>in-</sub></text>
+
+                    <!-- Output Terminal -->
+                    <line x1="200" y1="100" x2="240" y2="100" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="220" y="90" font-family="Segoe UI" font-size="14" fill="#2c3e50" text-anchor="middle">I<sub>out</sub></text>
+
+                    <!-- Bias Current Terminal -->
+                    <line x1="125" y1="150" x2="125" y2="180" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="120,170 125,180 130,170" fill="#2c3e50"/>
+                    <text x="125" y="195" font-family="Segoe UI" font-size="14" fill="#2c3e50" text-anchor="middle">I<sub>ABC</sub></text>
+
+                    <!-- g_m label -->
+                    <text x="125" y="100" font-family="Segoe UI" font-size="18" fill="#3498db" text-anchor="middle">g<sub>m</sub></text>
+                </svg>
+
+                <h3>5.2. Aplikasi OTA</h3>
+                <p>Karena transkonduktansnya yang dapat diprogram, OTA menemukan banyak aplikasi unik dalam elektronika analog:</p>
+                <ul>
+                    <li><strong>Filter Aktif yang Dapat Diprogram (Voltage Controlled Filters - VCF):</strong> Dengan mengubah <code>g<sub>m</sub></code> dari OTA, kita dapat mengubah frekuensi cut-off atau frekuensi pusat dari filter aktif. Ini sangat berguna dalam aplikasi audio, sintesis suara, atau kontrol adaptif.</li>
+                    <li><strong>Penguat Gain Variabel (Variable Gain Amplifiers - VGA):</strong> Gain dari VGA dapat diatur secara elektronik dengan mengubah <code>g<sub>m</sub></code> dari OTA, memungkinkan kontrol volume otomatis atau kompresi/ekspansi dinamis.</li>
+                    <li><strong>Osilator Terkendali Tegangan (Voltage Controlled Oscillators - VCO):</strong> Sama seperti filter, frekuensi osilasi dapat disesuaikan dengan mengubah <code>g<sub>m</sub></code>, yang memengaruhi laju pengisian/pengosongan kapasitor penentu frekuensi.</li>
+                    <li><strong>Mixer dan Modulator:</strong> Kemampuan untuk mem variasi gain (melalui <code>g<sub>m</sub></code>) dengan sinyal kontrol memungkinkan OTA digunakan sebagai mixer (mencampur dua sinyal frekuensi) atau modulator (mengubah amplitudo, frekuensi, atau fase sinyal).</li>
+                    <li><strong>Konverter Tegangan-ke-Arus (V-to-I Converter):</strong> Ini adalah fungsi dasar dari OTA.</li>
+                    <li><strong>Multilier Analog:</strong> Dengan konfigurasi yang tepat, OTA dapat digunakan untuk membangun sirkuit pengganda analog.</li>
+                    <li><strong>Penguat Puncak (Peak Detectors):</strong> Digunakan untuk mendeteksi nilai puncak dari sinyal.</li>
+                </ul>
+                <p>Fleksibilitas ini menjadikan OTA sebagai komponen penting dalam desain sirkuit analog yang adaptif dan dapat dikontrol secara elektronik.</p>
+            </section>
+
+            <section id="analisis-sinyal-kecil-dan-model">
+                <h2>6. Analisis Sinyal Kecil dan Model Transkonduktans</h2>
+                <p>Dalam desain sirkuit analog, seringkali kita berurusan dengan sinyal kecil (<em>small signals</em>) yang ditumpangkan pada bias DC. Analisis sinyal kecil memungkinkan kita untuk memprediksi perilaku penguat terhadap sinyal AC tanpa harus menangani kompleksitas non-linearitas perangkat. Transkonduktans adalah komponen inti dari model sinyal kecil untuk transistor.</p>
+
+                <h3>6.1. Model Sinyal Kecil Hibrida-Pi</h3>
+                <p>Model sinyal kecil hibrida-pi adalah model yang umum digunakan untuk transistor (baik BJT maupun MOSFET) untuk menganalisis respons AC. Dalam model ini, transkonduktans (g<sub>m</sub>) mewakili sumber arus yang dikendalikan tegangan (voltage-controlled current source, VCCS).</p>
+                <ul>
+                    <li><strong>Untuk BJT:</strong> Arus kolektor sinyal kecil (i<sub>c</sub>) adalah g<sub>m</sub> dikalikan tegangan basis-emitor sinyal kecil (v<sub>be</sub>): <code>i<sub>c</sub> = g<sub>m</sub> &times; v<sub>be</sub></code>. Parameter lain termasuk resistansi input (r<sub>π</sub>), resistansi output (r<sub>o</sub>), dan kapasitansi parasitik (C<sub>π</sub>, C<sub>μ</sub>).</li>
+                    <li><strong>Untuk MOSFET:</strong> Arus drain sinyal kecil (i<sub>d</sub>) adalah g<sub>m</sub> dikalikan tegangan gerbang-sumber sinyal kecil (v<sub>gs</sub>): <code>i<sub>d</sub> = g<sub>m</sub> &times; v<sub>gs</sub></code>. Parameter lain termasuk resistansi output (r<sub>ds</sub>) dan kapasitansi parasitik (C<sub>gs</sub>, C<sub>gd</sub>, C<sub>sb</sub>).</li>
+                </ul>
+                <p>Model ini menyederhanakan analisis dengan mengizinkan kita memperlakukan transistor sebagai rangkaian linier untuk sinyal kecil, yang sangat mengurangi kompleksitas matematika.</p>
+
+                <h3>6.2. Pentingnya dalam Simulasi</h3>
+                <p>Dalam perangkat lunak simulasi sirkuit seperti SPICE, model transkonduktans yang akurat sangat penting untuk memprediksi kinerja sirkuit dengan tepat. Parameter <code>g<sub>m</sub></code> diekstrak dari model perangkat (misalnya, model BSIM untuk MOSFET) dan digunakan dalam perhitungan sinyal kecil.</p>
+            </section>
+
+            <section id="pengukuran-transkonduktans">
+                <h2>7. Pengukuran Transkonduktans</h2>
+                <p>Meskipun transkonduktans adalah parameter teoritis, ia dapat diukur di dunia nyata, baik secara langsung maupun tidak langsung.</p>
+
+                <h3>7.1. Pengukuran Statis (DC)</h3>
+                <p>Pengukuran statis melibatkan pemplotan kurva karakteristik perangkat. Misalnya, untuk MOSFET, kita akan memplot I<sub>D</sub> vs V<sub>GS</sub> untuk V<sub>DS</sub> konstan. Transkonduktans pada titik operasi tertentu kemudian dapat diestimasi dari kemiringan kurva pada titik tersebut:</p>
+                <div class="equation">
+                    g<sub>m</sub> &asymp; &Delta;I<sub>D</sub> / &Delta;V<sub>GS</sub>
+                </div>
+                <p>Ini melibatkan perubahan tegangan masukan DC kecil dan mengukur perubahan arus keluaran DC yang dihasilkan.</p>
+
+                <h3>7.2. Pengukuran Dinamis (AC)</h3>
+                <p>Pengukuran dinamis lebih mendekati penggunaan sebenarnya dari transkonduktans dalam penguat sinyal kecil. Ini melibatkan penerapan sinyal AC kecil pada masukan perangkat dan mengukur sinyal AC keluaran yang dihasilkan. Peralatan seperti penganalisis parameter semikonduktor atau penganalisis jaringan dapat digunakan untuk mengukur transkonduktans pada frekuensi yang berbeda.</p>
+                <p>Teknik umum melibatkan injeksi sinyal AC kecil pada gerbang (atau basis) dan mengukur arus AC yang mengalir pada drain (atau kolektor) dengan tegangan drain/kolektor dijaga konstan (AC short to ground).</p>
+            </section>
+
+            <section id="tantangan-dan-pertimbangan-desain">
+                <h2>8. Tantangan dan Pertimbangan Desain</h2>
+                <p>Meskipun transkonduktans adalah parameter yang kuat, ada beberapa tantangan dan pertimbangan yang harus dihadapi oleh desainer sirkuit.</p>
+
+                <h3>8.1. Variasi Proses dan Toleransi</h3>
+                <p>Parameter perangkat seperti k' (untuk MOSFET) dan V<sub>T</sub>/V<sub>th</sub> dapat bervariasi karena ketidaksempurnaan dalam proses fabrikasi. Variasi ini secara langsung memengaruhi nilai <code>g<sub>m</sub></code>. Desainer harus merancang sirkuit agar robust terhadap variasi ini, seringkali dengan menggunakan umpan balik atau teknik pencocokan (matching) perangkat.</p>
+
+                <h3>8.2. Ketergantungan Suhu</h3>
+                <p>Perubahan suhu menyebabkan <code>g<sub>m</sub></code> bergeser, yang dapat mengubah gain penguat dan titik operasi. Kompensasi suhu adalah aspek penting dalam desain sirkuit presisi.</p>
+
+                <h3>8.3. Trade-off antara g<sub>m</sub>, Konsumsi Daya, dan Area</h3>
+                <p>Peningkatan <code>g<sub>m</sub></code> seringkali datang dengan biaya. Pada BJT, <code>g<sub>m</sub></code> yang lebih tinggi memerlukan arus bias I<sub>C</sub> yang lebih besar, yang meningkatkan konsumsi daya. Pada MOSFET, <code>g<sub>m</sub></code> yang lebih tinggi dapat dicapai dengan meningkatkan W/L, yang berarti perangkat yang lebih besar dan mengonsumsi lebih banyak area chip. Desainer harus menyeimbangkan persyaratan kinerja dengan batasan daya dan area.</p>
+
+                <h3>8.4. Linearitas</h3>
+                <p>Mencapai linearitas tinggi pada <code>g<sub>m</sub></code>, terutama untuk sinyal besar, adalah tantangan yang signifikan. Non-linearitas <code>g<sub>m</sub></code> menyebabkan distorsi harmonisa dan intermodulasi, yang menurunkan kualitas sinyal. Teknik seperti umpan balik negatif, degenerasi sumber/emitor, dan penggunaan konfigurasi diferensial sering digunakan untuk meningkatkan linearitas.</p>
+
+                <h3>8.5. Noise</h3>
+                <p>Transistor menghasilkan noise intrinsik. Transkonduktans yang lebih tinggi dapat membantu mengurangi dampak noise pada gain, tetapi juga dapat memengaruhi faktor noise sirkuit secara keseluruhan. Optimasi untuk noise seringkali melibatkan pertimbangan yang cermat terhadap <code>g<sub>m</sub></code> dan parameter perangkat lainnya.</p>
+            </section>
+
+            <section id="aplikasi-modern-dan-tren">
+                <h2>9. Aplikasi Modern dan Tren Masa Depan</h2>
+                <p>Transkonduktans terus menjadi konsep relevan dalam desain sirkuit modern, terutama dengan munculnya teknologi semikonduktor baru dan permintaan akan kinerja yang lebih tinggi.</p>
+
+                <h3>9.1. Komunikasi Nirkabel Frekuensi Tinggi (RFIC)</h3>
+                <p>Dalam komunikasi nirkabel, seperti 5G, Wi-Fi, atau aplikasi radar, transkonduktans tinggi sangat penting untuk mixer, penguat frekuensi radio (RF amplifiers), dan osilator lokal (local oscillators) yang beroperasi pada gigahertz. Desain perangkat dengan <code>g<sub>m</sub></code> yang dioptimalkan pada frekuensi tinggi adalah area penelitian yang aktif.</p>
+
+                <h3>9.2. Sirkuit Analog Daya Rendah</h3>
+                <p>Untuk perangkat bertenaga baterai seperti IoT (Internet of Things) atau perangkat medis implan, desain sirkuit dengan konsumsi daya yang sangat rendah adalah prioritas. Transkonduktans yang efisien (yaitu, g<sub>m</sub> yang tinggi pada arus bias rendah) adalah kunci. Ini sering melibatkan operasi transistor di wilayah sub-threshold atau weak-inversion pada MOSFET.</p>
+
+                <h3>9.3. Sensor dan Antarmuka Sensor</h3>
+                <p>Banyak sensor menghasilkan sinyal tegangan yang sangat kecil. Transkonduktans digunakan dalam sirkuit antarmuka sensor untuk mengubah sinyal tegangan lemah ini menjadi arus yang dapat diproses lebih lanjut atau diubah menjadi domain digital. Akurasi dan stabilitas <code>g<sub>m</sub></code> adalah penting dalam aplikasi ini.</p>
+
+                <h3>9.4. Kecerdasan Buatan Analog (Analog AI) dan Komputasi Neuromorfik</h3>
+                <p>Ada minat yang meningkat dalam menggunakan sirkuit analog untuk komputasi neuromorfik dan implementasi AI. Dalam beberapa arsitektur, bobot sinaptik (synaptic weights) dapat diimplementasikan menggunakan transkonduktans yang dapat diatur atau dimodifikasi, memungkinkan pemrosesan data yang efisien dan hemat daya.</p>
+
+                <h3>9.5. Emerging Devices</h3>
+                <p>Penelitian tentang perangkat baru seperti transistor efek medan gerbang-sekeliling (GAAFET), transistor karbon nanotube (CNTFET), atau transistor efek medan berbasis bahan 2D (seperti MoS<sub>2</sub>) semuanya melibatkan karakterisasi dan optimasi transkonduktans sebagai metrik kinerja utama.</p>
+            </section>
+
+            <section id="kesimpulan">
+                <h2>10. Kesimpulan</h2>
+                <p>Transkonduktans adalah salah satu pilar fundamental dalam elektronika analog, yang berfungsi sebagai jembatan antara domain tegangan dan arus. Ini adalah ukuran intrinsik kemampuan sebuah perangkat aktif untuk mengubah sinyal tegangan masukan menjadi sinyal arus keluaran, yang menjadi dasar bagi semua operasi penguatan.</p>
+                <p>Dari transistor bipolar hingga MOSFET modern, dan bahkan OTA yang dapat diprogram, transkonduktans adalah parameter yang tidak terpisahkan dalam analisis, desain, dan optimasi sirkuit elektronik. Pemahaman yang mendalam tentang bagaimana <code>g<sub>m</sub></code> didefinisikan, dihitung untuk berbagai perangkat, dipengaruhi oleh faktor-faktor lingkungan dan desain, serta perannya dalam sirkuit penguat, sangat penting bagi setiap insinyur elektronika.</p>
+                <p>Seiring dengan kemajuan teknologi semikonduktor, tantangan dalam mengoptimalkan <code>g<sub>m</sub></code> terus berkembang, terutama dalam konteks daya rendah, frekuensi tinggi, dan integrasi yang semakin kompleks. Namun, prinsip dasar transkonduktans tetap menjadi panduan yang konstan, memastikan relevansinya abadi dalam lanskap elektronika yang terus berubah.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Artikel ini dirancang untuk memberikan pemahaman komprehensif tentang transkonduktans.</p>
+        </footer>
+    </div>
+<div class='related-posts'><h3>Related Posts</h3><ul><li><a href="/tuang">Tuang</a></li>
+<li><a href="/wisata-kuliner">Wisata Kuliner</a></li>
+<li><a href="/wafa">Wafa</a></li>
+<li><a href="/vinometer">Vinometer</a></li>
+<li><a href="/warna-delima">Warna Delima</a></li>
+<li><a href="/vitamin-e">Vitamin E</a></li>
+<li><a href="/trigol">Trigol</a></li>
+<li><a href="/vulkanolog">Vulkanolog</a></li>
+<li><a href="/vitamin-b-3">Vitamin B 3</a></li>
+<li><a href="/warkat">Warkat</a></li></ul></div>
+<script src="/ik.js"></script>
+</body>
+</html>
